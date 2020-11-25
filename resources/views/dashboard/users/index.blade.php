@@ -20,21 +20,21 @@
                                 <thead>
                                 <tr>
                                     <th scope="col" width="50">ID</th>
+                                    <th scope="col" width="150" class="text-center">@lang('admin.image')</th>
                                     <th scope="col" width="200" class="text-center">@lang('admin.users.name')</th>
-                                    <th scope="col" class="text-center">@lang('admin.email')</th>
+                                    <th scope="col" class="text-center">@lang('admin.users.email')</th>
+                                    <th scope="col" class="text-center">@lang('admin.users.weekly_salary')</th>
                                     <th scope="col" class="text-center">@lang('admin.users.role')</th>
                                     <th scope="col" class="text-right">@lang('admin.actions')</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if(count($users) == 0)
-                                    <div class="alert alert-primary">
-                                        <i class="feather icon-alert-octagon"></i> @lang('admin.no_data')
-                                    </div>
-                                @else
-                                    @foreach($users as $item)
+                                    @forelse($users as $item)
                                         <tr>
                                             <th scope="row">{{ $item->id }}</th>
+                                            <td class="text-center">
+                                                <img src="{{ $item->image->url }}" alt="{{ $item->name }}">
+                                            </td>
                                             <td class="text-center">
                                                 {{ $item->name }}
                                             </td>
@@ -42,25 +42,33 @@
                                                 {{ $item->email }}
                                             </td>
                                             <td class="text-center">
-                                                @lang("admin.users.role$item->role_id")
+                                                {{ $item->getWeeklySalary() }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $item->role->name }}
                                             </td>
                                             <td class="text-right">
-                                                @if(auth()->user()->role_id === 3 || auth()->user()->id === $item->id)
+                                                @can('update', 'users')
                                                     <a href="{{ route('dashboard.users.edit', $item->id) }}" class="btn btn-icon btn-warning
                                                      btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="@lang('admin.edit')">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                @endif
+                                                @endcan
 
-                                                <a href="{{ route('dashboard.users.destroy', $item->id) }}" onclick="return confirm('@lang('admin.are_you_sure')')"
-                                                   class="btn btn-icon btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title=""
-                                                   data-original-title="@lang('admin.delete')">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
+                                                @can('delete', 'users')
+                                                    <button onclick="return confirm('@lang('admin.are_you_sure')')"
+                                                       class="btn btn-icon btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title=""
+                                                       data-original-title="@lang('admin.delete')">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                @endcan
                                             </td>
                                         </tr>
-                                    @endforeach
-                                @endif
+                                    @empty
+                                        <div class="alert alert-primary">
+                                            <i class="feather icon-alert-octagon"></i> @lang('admin.no_data')
+                                        </div>
+                                    @endforelse
                                 </tbody>
                             </table>
                             {{ $users->links() }}

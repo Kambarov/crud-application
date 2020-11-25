@@ -57,11 +57,8 @@ class PostService
         $post->update($attributes);
 
         if (array_key_exists('image', $attributes)) {
-//            if ($post->image()->exists()) {
-                $post->image->removeFile();
-                $post->image()->delete();
-//            } else
-//                $post->image()->delete();
+            $post->image->removeFile();
+            $post->image()->delete();
 
             $file = $this->image->uploadFile($attributes['image'], 'post');
 

@@ -22,7 +22,7 @@ class RoleController extends Controller
 
     public function index()
     {
-        $roles = $this->service->all();
+        $roles = $this->service->all(auth()->user()->role_id);
 
         return view('dashboard.roles.index', compact('roles'));
     }

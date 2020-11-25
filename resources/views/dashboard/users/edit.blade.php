@@ -28,7 +28,7 @@
                                                 <label>@lang('admin.users.name')</label>
                                                 <div class="controls">
                                                     <fieldset class="form-group position-relative has-icon-left input-divider-left">
-                                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                                                        <input type="text" name="name" required class="form-control @error('name') is-invalid @enderror"
                                                                value="{{ old('name', $user->name) }}" placeholder="@lang('admin.users.name')">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
@@ -41,16 +41,32 @@
                                                     @enderror
                                                 </div>
 
-                                                <label>@lang('admin.email')</label>
+                                                <label>@lang('admin.users.email')</label>
                                                 <div class="controls">
                                                     <fieldset class="form-group position-relative has-icon-left input-divider-left">
-                                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                                                               value="{{ old('email', $user->email) }}" placeholder="@lang('admin.email')">
+                                                        <input type="email" name="email" required class="form-control @error('email') is-invalid @enderror"
+                                                               value="{{ old('email', $user->email) }}" placeholder="@lang('admin.users.email')">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-mail"></i>
                                                         </div>
                                                     </fieldset>
                                                     @error('email')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+
+                                                <label>@lang('admin.users.weekly_salary')</label>
+                                                <div class="controls">
+                                                    <fieldset class="form-group position-relative has-icon-left input-divider-left">
+                                                        <input type="number" name="weekly_salary" required class="form-control @error('weekly_salary') is-invalid @enderror"
+                                                               value="{{ old('weekly_salary', $user->weekly_salary) }}" placeholder="@lang('admin.users.weekly_salary')">
+                                                        <div class="form-control-position">
+                                                            <i class="feather icon-dollar-sign"></i>
+                                                        </div>
+                                                    </fieldset>
+                                                    @error('weekly_salary')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
@@ -72,7 +88,6 @@
                                                     </div>
                                                     @enderror
                                                 </div>
-
                                             </div>
                                         </div>
 
@@ -80,10 +95,21 @@
                                         <fieldset class="form-group">
                                             <select name="role_id" class="form-control select2" required>
                                                 <option disabled selected>@lang('admin.users.choose_role')</option>
-                                                <option value="2" {{ $user->role_id === 2 ? 'selected' : '' }}>@lang('admin.users.role2')</option>
-                                                <option value="3" {{ $user->role_id === 3 ? 'selected' : '' }}>@lang('admin.users.role3')</option>
+                                                @foreach($roles as $role)
+                                                    <option value="{{ $role->id }}" {{ $user->role_id === $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
+                                                @endforeach
                                             </select>
                                         </fieldset>
+
+                                        <label>@lang('admin.image')</label>
+                                        <div class="custom-file">
+                                            <input id="uploadImage" class="custom-file-input" type="file" name="image" onchange="PreviewImage();" />
+                                            <label class="custom-file-label">@lang('admin.only_types')</label>
+                                        </div>
+                                        <br><br>
+                                        <div class="text-center">
+                                            <img id="uploadPreview" style="width: 200px; height: auto" src="{{ $user->image->url }}"/>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -100,4 +126,15 @@
 @push('js')
     <script src="/vendor/dashboard/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
     <script src="/vendor/dashboard/app-assets/js/scripts/forms/select/form-select2.js"></script>
+
+    <script>
+        function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("uploadPreview").src = oFREvent.target.result;
+            };
+        }
+    </script>
 @endpush

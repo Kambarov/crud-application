@@ -17,7 +17,6 @@ class ActionRequest extends FormRequest
             'name'          => 'required|array',
             'name.*'        => 'required|string',
             'permissions'   => 'required|array',
-            'permissions.*' => 'required|string'
         ];
     }
 }

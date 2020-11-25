@@ -16,7 +16,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form method="post" action="{{ route('dashboard.users.store') }}">
+                            <form method="post" action="{{ route('dashboard.users.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12">
@@ -27,7 +27,7 @@
                                                 <label>@lang('admin.users.name')</label>
                                                 <div class="controls">
                                                     <fieldset class="form-group position-relative has-icon-left input-divider-left">
-                                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                                                        <input type="text" name="name" required class="form-control @error('name') is-invalid @enderror"
                                                                value="{{ old('name') }}" placeholder="@lang('admin.users.name')">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
@@ -43,7 +43,7 @@
                                                 <label>@lang('admin.users.email')</label>
                                                 <div class="controls">
                                                     <fieldset class="form-group position-relative has-icon-left input-divider-left">
-                                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                                                        <input type="email" name="email" required class="form-control @error('email') is-invalid @enderror"
                                                                value="{{ old('email') }}" placeholder="@lang('admin.users.email')">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-mail"></i>
@@ -56,10 +56,26 @@
                                                     @enderror
                                                 </div>
 
+                                                <label>@lang('admin.users.weekly_salary')</label>
+                                                <div class="controls">
+                                                    <fieldset class="form-group position-relative has-icon-left input-divider-left">
+                                                        <input type="number" name="weekly_salary" required class="form-control @error('weekly_salary') is-invalid @enderror"
+                                                               value="{{ old('weekly_salary') }}" placeholder="@lang('admin.users.weekly_salary')">
+                                                        <div class="form-control-position">
+                                                            <i class="feather icon-dollar-sign"></i>
+                                                        </div>
+                                                    </fieldset>
+                                                    @error('weekly_salary')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+
                                                 <label>@lang('admin.users.password')</label>
                                                 <div class="controls">
                                                     <fieldset class="form-group position-relative has-icon-left input-divider-left">
-                                                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
+                                                        <input type="password" name="password" required class="form-control @error('password') is-invalid @enderror"
                                                                value="{{ old('password') }}" placeholder="@lang('admin.users.password')">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-lock"></i>
@@ -78,10 +94,21 @@
                                         <fieldset class="form-group">
                                             <select name="role_id" class="form-control select2" required>
                                                 <option disabled selected>@lang('admin.users.choose_role')</option>
-                                                <option value="2">@lang('admin.users.moderator')</option>
-                                                <option value="3">@lang('admin.users.administrator')</option>
+                                                @foreach($roles as $role)
+                                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                @endforeach
                                             </select>
                                         </fieldset>
+
+                                        <label>@lang('admin.image')</label>
+                                        <div class="custom-file">
+                                            <input id="uploadImage" required class="custom-file-input" type="file" name="image" onchange="PreviewImage();" />
+                                            <label class="custom-file-label">@lang('admin.only_types')</label>
+                                        </div>
+                                        <br><br>
+                                        <div class="text-center">
+                                            <img id="uploadPreview" style="width: 200px; height: auto" />
+                                        </div>
 
                                     </div>
                                 </div>
@@ -98,4 +125,15 @@
 @push('js')
     <script src="/vendor/dashboard/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
     <script src="/vendor/dashboard/app-assets/js/scripts/forms/select/form-select2.js"></script>
+
+    <script>
+        function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("uploadPreview").src = oFREvent.target.result;
+            };
+        }
+    </script>
 @endpush

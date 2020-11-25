@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\Post;
-use App\Models\User;
+use App\Http\View\Composers\getRolesComposer;
+use App\Http\View\Composers\StatisticsComposer;
+use App\Models\Role;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,15 +27,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('dashboard.index', function ($view) {
-            #avg_salary to get the Average salary of users
-            $view->with('avg_salary', User::avg('weekly_salary'));
+        View::composer('dashboard.index', StatisticsComposer::class);
 
-            #users_count to get the count of all users
-            $view->with('users_count', User::count());
-
-            #posts_count to get the count of all Posts
-            $view->with('posts_count', Post::count());
-        });
+        View::composer([
+            'dashboard.users.create',
+            'dashboard.users.edit'
+        ], getRolesComposer::class);
     }
 }

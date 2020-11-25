@@ -76,4 +76,9 @@ class User extends Authenticatable
     {
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    public function getWeeklySalary()
+    {
+        return number_format($this->weekly_salary, 0, '', ' ');
+    }
 }

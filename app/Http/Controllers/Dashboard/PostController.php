@@ -15,20 +15,18 @@ class PostController extends Controller
      * @var PostService
      */
     private $service;
-    /**
-     * @var \Illuminate\Contracts\Auth\Authenticatable|null
-     */
-    private $user;
 
     public function __construct(PostService $service)
     {
         $this->service = $service;
-        $this->user = auth()->user();
     }
 
     public function index()
     {
-        $posts = $this->service->all();
+        if (auth()->user()->role_id === 1 || auth()->user()->role_id === 2)
+            $posts = $this->service->all();
+        else
+            $posts = $this->service->getAuthorPost(auth()->user()->id);
 
         return view('dashboard.posts.index', compact('posts'));
     }
@@ -40,7 +38,7 @@ class PostController extends Controller
 
     public function store(CreatePostRequest $request)
     {
-        $this->service->create($request->validated(), $this->user->id);
+        $this->service->create($request->validated(), auth()->user()->id);
 
         $this->success(trans('admin.messages.created'));
         return redirect()->route('dashboard.posts.index');
@@ -53,7 +51,7 @@ class PostController extends Controller
 
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $this->service->update($request->validated(), $post, $this->user->id);
+        $this->service->update($request->validated(), $post, auth()->user()->id);
 
         $this->info(trans('admin.messages.updated'));
         return redirect()->route('dashboard.posts.index');

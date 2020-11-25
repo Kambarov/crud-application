@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
             'weekly_salary' => 26000,
             'role_id' => 1
         ])->image()->create([
-            'url' => '/vendor/dashboard/images/portrait/small/avatar-s-15.jpg'
+            'url' => '/vendor/dashboard/images/portrait/small/avatar-s-15.png'
         ]);
 
         User::create([
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
             'weekly_salary' => 20000,
             'role_id' => 2
         ])->image()->create([
-            'url' => '/vendor/dashboard/images/portrait/small/avatar-s-5.jpg'
+            'url' => '/vendor/dashboard/images/portrait/small/avatar-s-5.png'
         ]);
 
         User::create([
@@ -44,7 +44,7 @@ class UsersTableSeeder extends Seeder
             'weekly_salary' => 17000,
             'role_id' => 3
         ])->image()->create([
-            'url' => '/vendor/dashboard/images/portrait/small/avatar-s-6.jpg'
+            'url' => '/vendor/dashboard/images/portrait/small/avatar-s-6.png'
         ]);
     }
 }

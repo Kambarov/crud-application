@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->unsignedDouble('weekly_salary');
             $table->foreignId('role_id')->constrained()->cascadeOnDelete();
             $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
+//            $table->foreignId('current_team_id')->nullable();
 //            $table->text('profile_photo_path')->nullable();
             $table->timestamps();
         });

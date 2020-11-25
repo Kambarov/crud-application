@@ -109,6 +109,14 @@
                 </li>
             @endcan
 
+            @can('view', 'users')
+                <li class=" nav-item {{ request()->is('dashboard/users*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.users.index') }}">
+                        <i class="feather icon-users"></i><span class="menu-title">@lang('admin.users.title')</span>
+                    </a>
+                </li>
+            @endcan
+
             <li class=" nav-item {{ request()->is('dashboard/posts*') ? 'active' : '' }}">
                 <a href="{{ route('dashboard.posts.index') }}">
                     <i class="feather icon-book"></i><span class="menu-title">@lang('admin.posts.title')</span>
