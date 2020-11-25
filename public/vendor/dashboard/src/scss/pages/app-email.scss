@@ -2,7 +2,8 @@
 // 	File Name: email-application.scss
 // 	Description: SCC file for email application page.
 // 	----------------------------------------------------------------------------------------------
-// 	Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+// 	Item Name: Vuesax HTML Admin Template
+// 	Version: 1.1
 // 	Author: PIXINVENT
 // 	Author URL: http://www.themeforest.net/user/pixinvent
 // ================================================================================================
@@ -28,7 +29,6 @@
       .email-app-sidebar{
         width: $menu-expanded-width;
         height: calc(100vh - 13rem);
-        height: calc(var(--vh, 1vh) * 100 - 13rem);
         background-color: $white;
         border-top-left-radius: $border-radius-sm;
         border-bottom-left-radius: $border-radius-sm;
@@ -157,7 +157,6 @@
       .email-user-list{
         position: relative;
         height: calc(100vh - 20.3rem);
-        height: calc(var(--vh, 1vh) * 100 - 20.3rem);
         .users-list-wrapper{
           padding: 0;
           margin: 0;
@@ -186,7 +185,7 @@
                 flex-direction: column;
               }
               .media-body{
-                width: calc(100vw - (100vw - 100%) - 60px);
+                width: calc(100% - 60px);
                 overflow: hidden;
               }
             }
@@ -289,7 +288,7 @@
       transform: translateX(100%);
       transition: all .3s ease;
       height: 100%;
-      border-left: 1px solid $gray-300;
+      padding: 1.5rem 0;
       &.show{
         visibility: visible;
         transition: all .3s ease;
@@ -304,8 +303,7 @@
         box-shadow: 0 4px 6px rgba($pure_black,.04);
         border-bottom: 1px solid $kbd-bg;
         position: relative;
-        padding: 1.643rem 2rem 0;
-        background-color: $white;
+        padding: .85rem 2rem 0;
       }
       .email-header-right{
         .dropdown-toggle{
@@ -317,7 +315,6 @@
         padding: 0 2rem;
         position: relative;
         height: calc(100vh - 18.75rem);
-        height: calc(var(--vh, 1vh) * 100 - 18.75rem);
         .email-detail-head{
           border-bottom: 1px solid $gray-300;
           padding: 1.5rem 1rem .75rem;
@@ -397,7 +394,6 @@
           border-radius: $border-radius;
           .email-scroll-area {
             height: calc(100vh - 21.5rem);
-            height: calc(var(--vh, 1vh) * 100 - 21.5rem);
           }
         }
       }
@@ -421,7 +417,6 @@
     .app-content .content-right .email-app-details{
       .email-scroll-area {
         height: calc(100vh - 23.25rem);
-        height: calc(var(--vh, 1vh) * 100 - 23.25rem);
       }
     }
     .app-content .content-area-wrapper .email-user-list .users-list-wrapper li .user-details{
@@ -450,7 +445,6 @@
   }
   .email-application .app-content .content-area-wrapper .email-user-list{
     height: calc(100vh - 22.3rem);
-    height: calc(var(--vh, 1vh) * 100 - 22.3rem);
   }
   .email-application .email-app-details .email-detail-header{
     padding: 0 1.2rem;

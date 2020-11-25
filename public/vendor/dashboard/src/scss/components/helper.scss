@@ -3,7 +3,8 @@
 // 	Description: Helper classes provides color, width, position & background etc..
 // 				 related customiztion.
 // 	----------------------------------------------------------------------------------------------
-// 	Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+// 	Item Name: Vuesax HTML Admin Template
+// 	Version: 1.1
 // 	Author: PIXINVENT
 // 	Author URL: http://www.themeforest.net/user/pixinvent
 // ================================================================================================
@@ -489,12 +490,9 @@
 //vh height
 .full-height-vh-with-nav{
     height: calc(100vh - #{$navbar-height} - 4rem);
-    height: calc(var(--vh, 1vh) * 100 - #{$navbar-height} - 4rem);
-    
 }
 .full-height-vh{
     height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
 }
 
 // Line height

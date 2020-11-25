@@ -2,7 +2,8 @@
 //   File Name: chat-application.scss
 //   Description: SCC file for chat application page.
 //   ----------------------------------------------------------------------------------------------
-//   Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+//   Item Name: Vuesax HTML Admin Template
+//   Version: 1.1
 //   Author: PIXINVENT
 //   Author URL: http://www.themeforest.net/user/pixinvent
 // ================================================================================================
@@ -36,7 +37,6 @@ $chat-image-back-color: #dfdbe5;
   .chat-profile-sidebar{
     border-right: 1px solid $custom-border-color;
     height: calc(100vh - 13rem);
-    height: calc(var(--vh, 1vh) * 100 - 13rem);
     width: $chat-sidebar-width;
     border-radius: .25rem;
     border-top-right-radius: 0;
@@ -74,7 +74,6 @@ $chat-image-back-color: #dfdbe5;
       .scroll-area{
         padding: 2rem;
         height: calc(100vh - 24.25rem);
-        height: calc(var(--vh, 1vh) * 100 - 24.25rem);
         position: relative;
       }
     }
@@ -84,7 +83,6 @@ $chat-image-back-color: #dfdbe5;
   .sidebar-content{
     border-right: 1px solid $custom-border-color;
     height: calc(100vh - 13rem);
-    height: calc(var(--vh, 1vh) * 100 - 13rem);
     width: $chat-sidebar-width;
     border-radius: .25rem;
     border-top-right-radius: 0;
@@ -149,7 +147,7 @@ $chat-image-back-color: #dfdbe5;
           overflow: hidden;
         }
         .contact-info{
-          width: calc(100vw - (100vw - 100%) - 1rem - 50px);
+          width: calc(100% - 1rem - 50px);
           margin-top: .3rem;
           .truncate{
             margin: 0;
@@ -202,7 +200,6 @@ $chat-image-back-color: #dfdbe5;
       position: relative;
       text-align: center;
       height: calc(100vh - 23.5rem);
-      height: calc(var(--vh, 1vh) * 100 - 23.5rem);
     }
     .start-chat-area, .user-chats{
       background-image: url("../../images/backgrounds/chat-bg.svg");
@@ -210,7 +207,6 @@ $chat-image-back-color: #dfdbe5;
     }
     .start-chat-area{
       height: calc(100vh - 13rem);
-      height: calc(var(--vh, 1vh) * 100 - 13rem);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -287,7 +283,6 @@ $chat-image-back-color: #dfdbe5;
   .user-profile-sidebar{
     border-right: 1px solid $custom-border-color;
     height: calc(100vh - 13rem);
-    height: calc(var(--vh, 1vh) * 100 - 13rem);
     width: $chat-sidebar-width;
     border-radius: .25rem;
     border-top-left-radius: 0;
@@ -326,7 +321,6 @@ $chat-image-back-color: #dfdbe5;
     }
     .user-profile-sidebar-area{
       height: calc(100vh - 24.25rem);
-      height: calc(var(--vh, 1vh) * 100 - 24.25rem);
       position: relative;
     }
   }

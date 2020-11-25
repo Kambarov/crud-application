@@ -2,12 +2,6 @@
   "Dashboard": "Dashboard",
   "Analytics": "Analytics",
   "eCommerce": "eCommerce",
-  "Apps": "Apps",
-  "UI Elements": "UI Elements",
-  "Forms & Tables": "Forms & Tables",
-  "Pages": "Pages",
-  "Charts & Maps": "Charts & Maps",
-  "Others": "Others",
   "Email": "Email",
   "Chat": "Chat",
   "Todo": "Todo",
@@ -38,7 +32,7 @@
   "Icons": "Icons",
   "Feather": "Feather",
   "Font Awesome": "Font Awesome",
-  "Cards": "Cards",
+  "Card": "Card",
   "Basic": "Basic",
   "Advance": "Advance",
   "Statistics": "Statistics",
@@ -121,10 +115,5 @@
   "Third Level": "Third Level",
   "Disabled Menu": "Disabled Menu",
   "Documentation": "Documentation",
-  "Raise Support": "Raise Support",
-  "Miscellaneous": "Miscellaneous",
-  "Extensions": "Extensions",
-  "Media Player": "Media Player",
-  "agGrid Table": "agGrid Table",
-  "User Settings": "User Settings"
+  "Raise Support": "Raise Support"
 }

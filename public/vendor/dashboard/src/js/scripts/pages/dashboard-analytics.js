@@ -2,7 +2,8 @@
     File Name: dashboard-analytics.js
     Description: dashboard analytics page content with Apexchart Examples
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Vuesax HTML Admin Template
+    Version: 1.1
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -200,7 +201,6 @@ $(window).on("load", function () {
       bar: {
         columnWidth: '45%',
         distributed: true,
-        endingShape: 'rounded'
       }
     },
     tooltip: {
@@ -549,9 +549,6 @@ $(window).on("load", function () {
     tour.start()
   }
   else {
-    tour.cancel()
-  }
-  if($("body").hasClass("horizontal-menu")){
     tour.cancel()
   }
   $(window).on("resize", function () {

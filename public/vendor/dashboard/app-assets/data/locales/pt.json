@@ -2,12 +2,6 @@
   "Dashboard": "painel de controle",
   "Analytics": "Analytics",
   "eCommerce": "comércio eletrônico",
-  "Apps": "Apps",
-  "UI Elements": "Elementos da interface do usuário",
-  "Forms & Tables": "Formas e tabelas",
-  "Pages": "Páginas",
-  "Charts & Maps": "pronounce Gráficos e Mapas",
-  "Others": "Outras",
   "Email": "O email",
   "Chat": "Bate-papo",
   "Todo": "Façam",
@@ -38,7 +32,7 @@
   "Icons": "Ícones",
   "Feather": "Pena",
   "Font Awesome": "Fonte Incrível",
-  "Cards": "Cartão",
+  "Card": "Cartão",
   "Basic": "Basic",
   "Advance": "Avançar",
   "Statistics": "Estatisticas",
@@ -121,10 +115,5 @@
   "Third Level": "Terceiro nivel",
   "Disabled Menu": "Menu desativado",
   "Documentation": "Documentação",
-  "Raise Support": "Levantar Suporte",
-  "Miscellaneous": "Diversas",
-  "Extensions": "Extensões",
-  "Media Player": "Reprodutor de mídia",
-  "agGrid Table": "agGrid Table",
-  "User Settings": "Configurações do Usuário"
+  "Raise Support": "Levantar Suporte"
 }

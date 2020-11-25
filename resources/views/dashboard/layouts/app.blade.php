@@ -85,7 +85,7 @@
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('dashboard') }}">
                     <div class="brand-logo"></div>
-                    <h2 class="brand-text mb-0">GMG</h2>
+                    <h2 class="brand-text mb-0">CRUD</h2>
                 </a></li>
             <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block primary" data-ticon="icon-disc"></i></a></li>
         </ul>
@@ -93,7 +93,7 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item {{ request()->is('ru/dashboard')?'active':'' }}">
+            <li class=" nav-item {{ request()->is('dashboard')?'active':'' }}">
                 <a href="{{ route('dashboard') }}">
                     <i class="feather icon-home"></i><span class="menu-title" >@lang('admin.home')</span>
                 </a>
@@ -101,100 +101,24 @@
 
             <li class=" navigation-header"><span>Apps</span></li>
 
-{{--            <li class=" nav-item {{ request()->is('ru/dashboard/users*') ? 'active' : '' }}">--}}
-{{--                <a href="{{ route('dashboard.users.index') }}">--}}
-{{--                    <i class="feather icon-users"></i><span class="menu-title">@lang('admin.users.title')</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+            @can('view', 'roles')
+                <li class=" nav-item {{ request()->is('dashboard/roles*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.roles.index') }}">
+                        <i class="feather icon-check-circle"></i><span class="menu-title">@lang('admin.roles.title')</span>
+                    </a>
+                </li>
+            @endcan
 
-            <li class=" nav-item {{ request()->is('ru/dashboard/partners*') ? 'active' : '' }}">
-                <a href="{{ route('dashboard.partners.index') }}">
-                    <i class="feather icon-award"></i><span class="menu-title">@lang('admin.partners.title')</span>
+            <li class=" nav-item {{ request()->is('dashboard/posts*') ? 'active' : '' }}">
+                <a href="{{ route('dashboard.posts.index') }}">
+                    <i class="feather icon-book"></i><span class="menu-title">@lang('admin.posts.title')</span>
                 </a>
-            </li>
-
-            <li class=" nav-item {{ request()->is('ru/dashboard/products*') ? 'active' : '' }}">
-                <a href="{{ route('dashboard.products.index') }}">
-                    <i class="feather icon-database"></i><span class="menu-title">@lang('admin.products.title')</span>
-                </a>
-            </li>
-
-            <li class=" nav-item {{ request()->is('ru/dashboard/services*') ? 'active' : '' }}">
-                <a href="{{ route('dashboard.services.index') }}">
-                    <i class="feather icon-tag"></i><span class="menu-title">@lang('admin.services.title')</span>
-                </a>
-            </li>
-
-            <li class=" nav-item {{ request()->is('ru/dashboard/news*') ? 'active' : '' }}">
-                <a href="{{ route('dashboard.news.index') }}">
-                    <i class="feather icon-airplay"></i><span class="menu-title">@lang('admin.news.title')</span>
-                </a>
-            </li>
-
-            <li class=" nav-item {{ request()->is('dashboard/orders*') ? 'active' : '' }}">
-                @include('dashboard.partials.order.list')
-            </li>
-
-            <li class=" nav-item {{ request()->is('ru/dashboard/vacancies*') ? 'active' : '' }}">
-                <a href="{{ route('dashboard.vacancies.index') }}">
-                    <i class="feather icon-briefcase"></i><span class="menu-title">@lang('admin.vacancies.title')</span>
-                </a>
-            </li>
-
-            <li class=" nav-item {{ request()->is('dashboard/feedback*') ? 'active' : '' }}">
-                @include('dashboard.partials.feedback.list')
-            </li>
-
-            <li class="nav-item has-sub">
-                <a href="#">
-                    <i class="feather icon-align-center"></i>
-                    <span class="menu-title" data-i18n="Content">@lang('admin.sliders.title')</span>
-                </a>
-                <ul class="menu-content">
-                    <li class="{{ (request()->is("ru/dashboard/sliders/ru*")) ? 'active' : '' }}">
-                        <a href="{{ route('dashboard.sliders.index', 'ru') }}">
-                            <i class="feather icon-circle"></i>
-                            <span class="menu-item" data-i18n="Grid">Ru</span>
-                        </a>
-                    </li>
-                    <li class="{{ (request()->is("ru/dashboard/sliders/en*")) ? 'active' : '' }}">
-                        <a href="{{ route('dashboard.sliders.index', 'en') }}">
-                            <i class="feather icon-circle"></i>
-                            <span class="menu-item" data-i18n="Grid">En</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-{{--            <li class=" nav-item {{ request()->is('ru/dashboard/pages*') ? 'active' : '' }}">--}}
-{{--                <a href="{{ route('dashboard.pages.index') }}">--}}
-{{--                    <i class="feather icon-file-text"></i><span class="menu-title">@lang('admin.pages.title')</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-
-            <li class="nav-item has-sub">
-                <a href="#">
-                    <i class="feather icon-align-center"></i>
-                    <span class="menu-title" data-i18n="Content">@lang('admin.pages.title')</span>
-                </a>
-                <ul class="menu-content">
-                    @include('dashboard.partials.pages.list')
-{{--                    <li class="{{ request()->is("dashboard/pages/create*") ? 'active' : '' }}">--}}
-{{--                        <a href="{{ route('dashboard.pages.create') }}">--}}
-{{--                            <i class="feather icon-plus-circle"></i>--}}
-{{--                            <span class="menu-item" data-i18n="Grid">@lang('admin.add')</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-                </ul>
             </li>
 
             <li class="navigation-header">
                 <span>
                     <hr>
                 </span>
-            </li>
-            <li class=" nav-item {{ request()->is('ru/dashboard/settings*') ? 'active' : '' }}">
-                @include('dashboard.partials.settings.link')
             </li>
 
             <li class="nav-item">
@@ -232,7 +156,7 @@
 
 <!-- BEGIN: Footer-->
 <footer class="footer footer-static footer-light">
-    <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">GMG &copy; {{ date('Y', time()) }}<a class="text-bold-800 grey darken-2" href="#" target="_blank">Pixinvent,</a>All rights Reserved</span><span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i class="feather icon-heart pink"></i></span>
+    <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">CRUD &copy; {{ date('Y', time()) }}<a class="text-bold-800 grey darken-2" href="#" target="_blank">Pixinvent,</a>All rights Reserved</span><span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i class="feather icon-heart pink"></i></span>
         <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
     </p>
 </footer>

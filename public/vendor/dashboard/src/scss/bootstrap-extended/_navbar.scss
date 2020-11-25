@@ -3,12 +3,14 @@
     Description: Contain header navigation bar, vertical main navigation bar and
     horiznotal main navigation bar related SCSS.
     ----------------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Vuesax HTML Admin Template
+    Version: 1.1
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ================================================================================================*/
 
 %extend_hamburger_color {
+
   .hamburger-inner,
   .hamburger-inner::before,
   .hamburger-inner::after {
@@ -23,6 +25,7 @@
     @return $black; // Darker background, return light color
   }
 }
+
 
 @mixin fullNav {
   .navbar-header {
@@ -66,12 +69,7 @@
 .navbar-floating {
   .header-navbar-shadow {
     display: block;
-    background: linear-gradient(
-      180deg,
-      hsla(0, 0%, 97.3%, 0.95) 44%,
-      hsla(0, 0%, 97.3%, 0.46) 73%,
-      hsla(0, 0%, 100%, 0)
-    );
+    background: linear-gradient(180deg, hsla(0, 0%, 97.3%, .95) 44%, hsla(0, 0%, 97.3%, .46) 73%, hsla(0, 0%, 100%, 0));
     padding-top: 2.2rem;
     background-repeat: repeat;
     width: 100%;
@@ -84,44 +82,31 @@
 
 .header-navbar {
   padding: 0px;
-  min-height: $navbar-height - 0.5;
+  min-height: $navbar-height - .5;
   font-family: $font-family-monospace;
   transition: 300ms ease all;
-  background: linear-gradient(
-    180deg,
-    hsla(0, 0%, 97.3%, 0.95) 44%,
-    hsla(0, 0%, 97.3%, 0.46) 73%,
-    hsla(0, 0%, 100%, 0)
-  );
-  z-index: 997; // 1000;
-
+  background: linear-gradient(180deg, hsla(0, 0%, 97.3%, .95) 44%, hsla(0, 0%, 97.3%, .46) 73%, hsla(0, 0%, 100%, 0));
+  z-index: 1000;
   &.fixed-top {
     left: $menu-expanded-width;
   }
 
-  &[class*="bg-"] {
-    .navbar-nav {
-      .nav-item {
-        > a {
+  &[class*="bg-"]{
+    .navbar-nav{
+      .nav-item{
+        a{
           color: set-navbar-text-color($theme-dark-text-color) !important;
-
           i,
-          span {
+          span{
             color: set-navbar-text-color($theme-dark-text-color) !important;
-          }
-        }
-
-        .dropdown-menu {
-          i {
-            color: inherit !important;
           }
         }
       }
 
-      .search-input {
-        .input,
-        .search-list .auto-suggestion span {
-          color: $body-color !important;
+    .search-input{
+      .input,
+      .search-list .auto-suggestion span{
+        color: $body-color !important;
         }
       }
     }
@@ -131,20 +116,14 @@
     margin: 1.3rem #{$content-padding} 0;
     border-radius: 0.5rem;
     position: fixed;
-    width: calc(
-      100vw - (100vw - 100%) - calc(#{$content-padding} * 2) - #{$menu-expanded-width}
-    );
-    z-index: 12;
+    width: calc(100% - calc(#{$content-padding} * 2) - #{$menu-expanded-width});
+    z-index: 11;
     right: 0;
   }
 
   &.navbar-static-top {
     background: transparent;
     box-shadow: none !important; // remove this if removing "menu-shadow" class
-    top: 0;
-    right: 0;
-    left: $menu-expanded-width;
-    width: calc(100vw - (100vw - 100%) - #{$sidebar-width});
   }
 
   .navbar-wrapper {
@@ -157,20 +136,18 @@
   }
 
   &.navbar-dark.navbar-border {
-    border-bottom: 1px solid #8596b5;
+    border-bottom: 1px solid #8596B5;
   }
 
   // add shadow to navbar
   &.navbar-shadow {
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .05);
   }
 
   // hide top horizontal menu drop-down arrow
-  &:not(.navbar-horizontal) {
-    .nav-link {
-      &.dropdown-toggle::after {
-        display: none;
-      }
+  .nav-link {
+    &.dropdown-toggle::after {
+      display: none;
     }
   }
 
@@ -190,15 +167,13 @@
     transition: 300ms ease all;
     background: inherit;
     margin-left: 0;
-
-    .bookmark-wrapper {
+    .bookmark-wrapper{
       ul.nav {
         li {
-          > a.nav-link {
+          >a.nav-link {
             padding: 1.4rem 0.5rem 1.35rem;
-
-            i {
-              &:hover {
+            i{
+              &:hover{
                 color: $primary;
               }
             }
@@ -208,7 +183,7 @@
     }
 
     // for bookmark z-index
-    .bookmark-input {
+    .bookmark-input{
       z-index: 1;
     }
 
@@ -230,12 +205,12 @@
         }
 
         &.dropdown-language {
-          > a.nav-link {
-            padding: 1.65rem 0.5rem;
+          >a.nav-link {
+            padding: 1.75rem 0.5rem;
           }
         }
 
-        > a.nav-link {
+        >a.nav-link {
           color: $body-color;
           padding: 1.6rem 0.5rem 1.35rem 1rem;
 
@@ -256,7 +231,7 @@
               &:hover,
               &:active {
                 background: $primary;
-                color: $white !important;
+                color: $white;
               }
             }
           }
@@ -276,14 +251,13 @@
           .user-status {
             font-size: smaller;
           }
-
-          img {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12),
-              0 2px 4px 0 rgba(0, 0, 0, 0.08);
+          img{
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,.12),0 2px 4px 0 rgba(0,0,0,.08);
           }
         }
 
         a.menu-toggle {
+          // padding: 1.1rem 0.8rem 1rem 1rem;
           padding: 1.34rem 0.22rem 1.35rem 0;
 
           i {
@@ -305,6 +279,11 @@
           }
         }
 
+        a.nav-link-search,
+        a.nav-link-expand {
+          // padding: 1.4rem 1rem 1.3rem 1rem;
+        }
+
         div.input-group {
           padding: 0.7rem 1rem;
         }
@@ -312,14 +291,13 @@
         i.ficon {
           font-size: 1.5rem;
           color: $body-color;
-
-          &:hover {
+          &:hover{
             color: $primary;
           }
         }
 
         .media-list {
-          max-height: 25rem;
+          max-height: 18.2rem;
         }
 
         .scrollable-container {
@@ -346,10 +324,9 @@
             color: $body-color;
           }
         }
-
-        a:last-of-type {
-          .media {
-            border-bottom: none;
+        a:last-of-type{
+          .media{
+           border-bottom: none;
           }
         }
       }
@@ -364,36 +341,6 @@
           border-top: 1px solid $gray-300;
         }
       }
-
-      &.dropdown-cart {
-        &.empty-cart {
-          &:before {
-            background: $white;
-            border-color: rgba($color: $pure-black, $alpha: 0.1);
-          }
-        }
-        .cart-item {
-          color: $body-color;
-        }
-        .media {
-          padding: 0;
-          .media-left {
-            width: 100px;
-            text-align: center;
-            padding-right: 0;
-            margin-right: 1rem;
-            img {
-              height: 100%;
-            }
-          }
-
-          .media-body {
-            padding: 1rem;
-            padding-left: 0;
-            overflow: hidden;
-          }
-        }
-      }
     }
   }
 
@@ -403,11 +350,11 @@
     }
   }
 
-  // &.navbar-with-menu {
-  //   .navbar-container {}
-  // }
+  &.navbar-with-menu {
+    .navbar-container {}
+  }
 
-  .nav-item + .nav-item {
+  .nav-item+.nav-item {
     margin-left: 0rem;
   }
 
@@ -415,6 +362,7 @@
   @include media-breakpoint-down(sm) {
     @include fullNav;
   }
+
 }
 
 /* Modern menu For md screen*/
@@ -440,6 +388,7 @@
         color: $gray-600;
       }
     }
+
   }
 }
 
@@ -485,6 +434,7 @@
   @extend %extend_hamburger_color;
 
   .nav-search {
+
     .form-control,
     .btn-secondary {
       color: $white;
@@ -520,7 +470,7 @@
     }
   }
 
-  background: $white;
+  background:$white;
 
   .navbar-nav {
     li {
@@ -593,6 +543,7 @@
   }
 }
 
+
 .navbar-menu-icon {
   span {
     display: block;
@@ -604,7 +555,7 @@
     opacity: 1;
     left: 0;
     transform: rotate(0deg);
-    transition: 0.25s ease-in-out;
+    transition: .25s ease-in-out;
   }
 }
 
@@ -639,6 +590,7 @@
 // =========================================
 @include media-breakpoint-down(sm) {
   .header-navbar {
+
     // generic navbar dropdown specific
     .navbar-nav {
       .show {
@@ -658,13 +610,8 @@
           float: none;
           width: auto;
           margin-top: 0;
-          overflow: hidden;
-        }
-      }
-
-      .dropdown-user {
-        .dropdown-menu-right {
-          right: 0 !important;
+          max-height: 400px;
+          overflow-x: hidden;
         }
       }
 
@@ -690,6 +637,7 @@
   // dark navbar
   .navbar-dark,
   .navbar-semi-dark {
+
     .hamburger-inner,
     .hamburger-inner::before,
     .hamburger-inner::after {
@@ -764,24 +712,24 @@
 }
 
 // header navbar when floating nav
-body {
-  &[data-col="1-column"] {
-    .header-navbar {
-      &.floating-nav {
-        width: calc(100vw - (100vw - 100%) - calc(#{$content-padding} * 2));
+  body{
+    &[data-col="1-column"]{
+      .header-navbar {
+        &.floating-nav {
+          width: calc(100% - calc(#{$content-padding} * 2));
+        }
       }
     }
   }
-}
 
 // header navbar when floating nav
 @media (min-width: 1200px) and (-ms-high-contrast: active),
-  (-ms-high-contrast: none) {
-  body {
-    &:not([data-col="1-columns"]) {
+(-ms-high-contrast: none) {
+  body{
+    &:not([data-col="1-columns"]){
       .header-navbar {
         &.floating-nav {
-          width: calc(100vw - (100vw - 100%) - 60px - #{$menu-expanded-width});
+          width: calc(100% - 60px - #{$menu-expanded-width});
         }
       }
     }
@@ -795,8 +743,19 @@ body {
     .navbar-container {
       ul.nav {
         li {
+          &.dropdown-language {
+            >a.nav-link {
+              padding: 1.75rem 0.5rem;
+
+            }
+          }
+
           a.dropdown-user-link {
             padding: 0.7rem 1.23rem;
+          }
+
+          a.nav-link-search {
+            padding: 1.6rem 0 1.35rem 1rem;
           }
 
           .dropdown-toggle::after {
@@ -805,11 +764,6 @@ body {
           }
         }
       }
-    }
-
-    &.navbar-static-top {
-      left: 0;
-      width: 100%;
     }
   }
 }
@@ -827,6 +781,7 @@ body {
 }
 
 @mixin responsive_sub_nav {
+
   //For responsive sub nav
   #navbar-mobile.navbar-collapse {
     .navbar-nav {
@@ -854,13 +809,16 @@ body {
 
 /* ----------- iPhone 5, 5S  iPhone 6----------- */
 
+
 /* Landscape */
 
 @media only screen and (min-device-width: 26.78em) and (max-device-width: 47.64em) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
   @include extend_mobile_specific(180px);
 }
 
+
 /* ----------- iPhone 6+ ----------- */
+
 
 /* Landscape */
 
@@ -868,47 +826,43 @@ body {
   @include extend_mobile_specific(280px);
 }
 
+
 /*----------------------------- For Navbar Component -------------------------*/
 
 #navbar-component {
   .navbar {
-    &.floating-nav {
-      border-radius: 0.5rem;
+    &.floating-nav{
+      border-radius: .5rem;
     }
-
-    z-index: auto !important;
-
+    z-index: auto;
     // navbar dark color
-    .navbar-nav {
-      .nav-item {
-        a {
-          color: inherit;
+    .navbar-nav{
+      .nav-item{
+        a{
+          color: inherit !important;
         }
       }
     }
-
-    &.header-navbar.navbar-dark {
-      .navbar-nav {
-        .nav-link {
+    &.header-navbar.navbar-dark{
+      .navbar-nav{
+        .nav-link{
           color: $white;
-
-          i {
+          i{
             color: $white;
           }
         }
       }
     }
 
-    .navbar-nav {
+    .navbar-nav{
       .dropdown-language,
       .dropdown-notification,
       .dropdown-user {
-        &.show {
+        &.show{
           position: relative;
         }
-
-        .dropdown-menu {
-          &.show {
+        .dropdown-menu{
+          &.show{
             position: absolute;
             right: 0;
             left: auto !important;
@@ -923,7 +877,6 @@ body {
     &.navbar-light {
       .navbar-toggler {
         font-size: 1.2rem;
-
         &:focus {
           outline: 0;
         }
@@ -933,25 +886,25 @@ body {
 
   // to remove border radius for collapsed navbar
 
-  #navbar-collapsed {
-    .navbar {
+  #navbar-collapsed{
+    .navbar{
       border-radius: 0;
     }
   }
 }
 
 // for alignment of language dropdown and name
-@media (min-width: 992px) {
-  #navbar-component {
-    .navbar {
-      .navbar-container {
-        background: inherit;
-      }
-    }
+@media(min-width: 992px){
 
-    .nav {
-      .dropdown-language {
-        float: right;
+#navbar-component{
+  .navbar{
+    .navbar-container{
+      background: inherit;
+    }
+  }
+  .nav{
+    .dropdown-language{
+      float: right;
       }
     }
   }
@@ -959,55 +912,34 @@ body {
 
 // background color
 
-@media (max-width: 992px) {
-  #navbar-component {
-    .navbar {
-      .navbar-container {
+@media(max-width: 992px){
+  #navbar-component{
+    .navbar{
+      .navbar-container{
         background: inherit;
-
-        .navbar-nav {
+        .navbar-nav{
           flex-direction: row;
         }
       }
     }
   }
 }
-
 // for width of navbar in fixed-top
-@media (max-width: 1201px) {
+@media(max-width: 1200px){
   .header-navbar {
     &.fixed-top {
       left: 0;
     }
   }
-
-  .horizontal-layout {
-    .header-navbar {
-      .navbar-container {
-        padding-left: 1.5rem;
-        padding-right: 1.2rem;
-      }
-    }
-  }
-}
-
-@media (max-width: 1199px) {
-  .header-navbar {
-    .navbar-container {
-      ul.nav li a.dropdown-user-link .user-name {
-        margin-bottom: 0;
-      }
-    }
-  }
 }
 
 // for notification dropdown of navbar component page
-@media (max-width: 768px) {
-  #navbar-component {
-    .navbar {
-      .navbar-nav {
-        .dropdown-notification {
-          &.show {
+@media (max-width: 768px){
+  #navbar-component{
+    .navbar{
+      .navbar-nav{
+        .dropdown-notification{
+          &.show{
             position: static;
           }
         }
@@ -1018,27 +950,21 @@ body {
 
 @include media-breakpoint-down(xs) {
   .header-navbar.floating-nav {
-    width: calc(100vw - (100vw - 100%) - 2.4rem) !important;
+    width: calc(100% - 2.4rem) !important;
     margin-left: 1.2rem;
     margin-right: 1.2rem;
   }
-
-  .content.app-content .content-area-wrapper {
+  .content.app-content .content-area-wrapper{
     margin-left: 1.2rem !important;
     margin-right: 1.2rem !important;
-  }
-
-  .header-navbar .navbar-container {
-    padding-left: 1rem !important;
-    padding-right: 0 !important;
   }
 }
 
 // 1-column Layout - Back Link in Center
-@media (max-width: 992px) {
-  .navbar-container {
-    #navbar-mobile {
-      .nav-back {
+@media(max-width: 992px){
+  .navbar-container{
+    #navbar-mobile{
+      .nav-back{
         margin-top: 5px;
       }
     }

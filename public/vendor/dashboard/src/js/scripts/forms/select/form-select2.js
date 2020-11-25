@@ -3,7 +3,8 @@
     Description: Select2 is a jQuery-based replacement for select boxes.
     It supports searching, remote data sets, and pagination of results.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Vuesax HTML Admin Template
+    Version: 1.1
     Author: Pixinvent
     Author URL: hhttp://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -11,17 +12,10 @@
 	'use strict';
 
   // Basic Select2 select
-	$(".select2").select2({
-    // the following code is used to disable x-scrollbar when click in select input and
-    // take 100% width in responsive also
-    dropdownAutoWidth: true,
-    width: '100%'
-  });
+	$(".select2").select2();
 
     // Select With Icon
     $(".select2-icons").select2({
-        dropdownAutoWidth: true,
-        width: '100%',
         minimumResultsForSearch: Infinity,
         templateResult: iconFormat,
         templateSelection: iconFormat,
@@ -40,22 +34,15 @@
 
     // Limiting the number of selections
     $(".max-length").select2({
-      dropdownAutoWidth: true,
-      width: '100%',
       maximumSelectionLength: 2,
       placeholder: "Select maximum 2 items"
     });
 
 
     // Programmatic access
-    var $select = $(".js-example-programmatic").select2({
-      dropdownAutoWidth: true,
-      width: '100%'
-    });
+    var $select = $(".js-example-programmatic").select2();
     var $selectMulti = $(".js-example-programmatic-multi").select2();
     $selectMulti.select2({
-      dropdownAutoWidth: true,
-      width: '100%',
       placeholder: "Programmatic Events"
     });
     $(".js-programmatic-set-val").on("click", function () { $select.val("CA").trigger("change"); });
@@ -79,15 +66,11 @@
     ];
 
     $(".select2-data-array").select2({
-      dropdownAutoWidth: true,
-      width: '100%',
       data: data
     });
 
     // Loading remote data
     $(".select2-data-ajax").select2({
-        dropdownAutoWidth: true,
-        width: '100%',
         ajax: {
         url: "https://api.github.com/search/repositories",
         dataType: 'json',
@@ -159,17 +142,13 @@
 
     $.fn.select2.amd.require(['select2/compat/matcher'], function (oldMatcher) {
       $(".select2-customize-result").select2({
-        dropdownAutoWidth: true,
-        width: '100%',
-        placeholder: "Search by 'r'",
+        placeholder: "Search by 'a'",
         matcher: oldMatcher(matchStart)
       });
     });
 
     // Theme support
     $(".select2-theme").select2({
-      dropdownAutoWidth: true,
-      width: '100%',
       placeholder: "Classic Theme",
       theme: "classic"
     });
@@ -179,15 +158,11 @@
 
     // Large
     $('.select2-size-lg').select2({
-        dropdownAutoWidth: true,
-        width: '100%',
         containerCssClass: 'select-lg'
     });
 
     // Small
     $('.select2-size-sm').select2({
-        dropdownAutoWidth: true,
-        width: '100%',
         containerCssClass: 'select-sm'
     });
 
@@ -211,8 +186,6 @@
       var className = "bg-"+color + variation + " " + textColor + textVariation + " border-"+color + ' border-darken-2 ';
 
       $(this).select2({
-        dropdownAutoWidth: true,
-        width: '100%',
         containerCssClass: className
       });
     });
@@ -236,8 +209,6 @@
       var className = "border-"+color + " " +variation + " " + textColor + textVariation;
 
       $(this).select2({
-        dropdownAutoWidth: true,
-        width: '100%',
         containerCssClass: className
       });
     });
@@ -260,8 +231,6 @@
       var className = "bg-"+color + variation + " " + textColor + textVariation + " border-"+color + ' border-darken-2 ';
 
       $(this).select2({
-        dropdownAutoWidth: true,
-        width: '100%',
         containerCssClass: className,
         dropdownCssClass: className
       });

@@ -3,15 +3,13 @@
   Description: Menu navigation, custom scrollbar, hover scroll bar, multilevel menu
   initialization and manipulations
   ----------------------------------------------------------------------------------------
-  Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+  Item Name: Vuesax HTML Admin Template
+  Version: 1.1
   Author: Pixinvent
   Author URL: hhttp://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 (function (window, document, $) {
   'use strict';
-
-  var vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', vh + "px");
 
   $.app = $.app || {};
 
@@ -28,61 +26,37 @@
     container: null,
     horizontalMenu: false,
 
-    is_touch_device: function () {
-      var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
-      var mq = function (query) {
-        return window.matchMedia(query).matches;
-      }
-      if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
-        return true;
-      }
-      // include the 'heartz' as a way to have a non matching MQ to help terminate the join
-      // https://git.io/vznFH
-      var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
-      return mq(query);
-    },
-
     manualScroller: {
       obj: null,
 
       init: function () {
         var scroll_theme = ($('.main-menu').hasClass('menu-dark')) ? 'light' : 'dark';
-        if (!$.app.menu.is_touch_device()) {
-          this.obj = new PerfectScrollbar(".main-menu-content", {
-            suppressScrollX: true,
-            wheelPropagation: false
-          });
-        }
-        else {
-          $(".main-menu").addClass("menu-native-scroll")
-        }
+        this.obj = new PerfectScrollbar(".main-menu-content", {
+          suppressScrollX: true,
+          wheelPropagation: false
+        });
       },
 
       update: function () {
         if (this.obj) {
           // Scroll to currently active menu on page load if data-scroll-to-active is true
           if ($('.main-menu').data('scroll-to-active') === true) {
-            var activeEl, menu, activeElHeight;
+            var activeEl, menu;
             activeEl = document.querySelector('.main-menu-content li.active');
             if ($body.hasClass('menu-collapsed')) {
               if ($('.main-menu-content li.sidebar-group-active').length) {
                 activeEl = document.querySelector('.main-menu-content li.sidebar-group-active');
               }
-            } else {
-              menu = document.querySelector('.main-menu-content');
-              if (activeEl) {
-                activeElHeight = activeEl.getBoundingClientRect().top + menu.scrollTop;
-              }
-              // If active element's top position is less than 2/3 (66%) of menu height than do not scroll
-              if (activeElHeight > parseInt((menu.clientHeight * 2) / 3)) {
-                var start = menu.scrollTop,
-                  change = activeElHeight - start - parseInt(menu.clientHeight / 2);
-              }
+            }
+            menu = document.querySelector('.main-menu-content');
+            activeEl = activeEl.getBoundingClientRect().top + menu.scrollTop;
+            // If active element's top position is less than 2/3 (66%) of menu height than do not scroll
+            if (activeEl > parseInt((menu.clientHeight * 2) / 3)) {
+              var start = menu.scrollTop,
+                change = activeEl - start - parseInt(menu.clientHeight / 2);
             }
             setTimeout(function () {
-              $.app.menu.container.stop().animate({
-                scrollTop: change
-              }, 300);
+              $.app.menu.container.stop().animate({ scrollTop: change }, 300);
               $('.main-menu').data('scroll-to-active', 'false');
             }, 300);
           }
@@ -125,10 +99,12 @@
           var menuToggle = '';
           if (menuToggle === "false") {
             this.change('collapsed');
-          } else {
+          }
+          else {
             this.change(defMenu);
           }
-        } else {
+        }
+        else {
           this.change(defMenu);
         }
       }
@@ -143,7 +119,8 @@
               backLabel: true
             });
           }
-        } else {
+        }
+        else {
           $('.drilldown-menu').slidingMenu({
             backLabel: true
           });
@@ -163,7 +140,8 @@
           case 'xl':
             if (menuType === 'vertical-overlay-menu') {
               this.hide();
-            } else {
+            }
+            else {
               if (defMenu === 'collapsed')
                 this.collapse(defMenu);
               else
@@ -171,9 +149,10 @@
             }
             break;
           case 'lg':
-            if (menuType === 'vertical-overlay-menu' || menuType === 'vertical-menu-modern' || menuType === 'horizontal-menu') {
+            if (menuType === 'vertical-overlay-menu' || menuType === 'vertical-menu-modern') {
               this.hide();
-            } else {
+            }
+            else {
               this.collapse();
             }
             break;
@@ -208,7 +187,7 @@
       // Dropdown submenu on large screen on hover For Large screen only
       // ---------------------------------------------------------------
       if (currentBreakpoint.name == 'xl') {
-        $('body[data-open="hover"] .header-navbar .dropdown').on('mouseenter', function () {
+        $('body[data-open="hover"] .dropdown').on('mouseenter', function () {
           if (!($(this).hasClass('show'))) {
             $(this).addClass('show');
           } else {
@@ -238,14 +217,6 @@
       } else {
         $('.header-navbar[data-nav=brand-center]').addClass('navbar-brand-center');
       }
-      // On screen width change, current active menu in horizontal
-      if (currentBreakpoint.name == 'xl' && menuType == 'horizontal-menu') {
-        $(".main-menu-content").find('li.active').parents('li').addClass('sidebar-group-active active');
-      }
-
-      if (currentBreakpoint.name !== 'xl' && menuType == 'horizontal-menu') {
-        $("#navbar-type").toggleClass('d-none d-xl-block');
-      }
 
       // Dropdown submenu on small screen on click
       // --------------------------------------------------
@@ -258,60 +229,23 @@
         $(this).parent().toggleClass('show');
       });
 
-
-      // Horizontal layout submenu drawer scrollbar
+      // Horizontal Fixed Nav Sticky hight issue on small screens
       if (menuType == 'horizontal-menu') {
-        $('li.dropdown-submenu').on('mouseenter', function () {
-          if (!$(this).parent('.dropdown').hasClass('show')) {
-            $(this).removeClass('openLeft');
+        if (currentBreakpoint.name == 'sm' || currentBreakpoint.name == 'xs') {
+          if ($(".menu-fixed").length) {
+            $(".menu-fixed").unstick();
           }
-          var dd = $(this).find('.dropdown-menu');
-          if (dd) {
-            var pageHeight = $(window).height(),
-              // ddTop = dd.offset().top,
-              ddTop = $(this).position().top,
-              ddLeft = dd.offset().left,
-              ddWidth = dd.width(),
-              ddHeight = dd.height();
-            if (((pageHeight - ddTop) - ddHeight - 28) < 1) {
-              var maxHeight = (pageHeight - ddTop - 170);
-              $(this).find('.dropdown-menu').css({
-                'max-height': maxHeight + 'px',
-                'overflow-y': 'auto',
-                'overflow-x': 'hidden'
-              });
-              var menu_content = new PerfectScrollbar('li.dropdown-submenu.show .dropdown-menu', {
-                wheelPropagation: false
-              });
-            }
-            // Add class to horizontal sub menu if screen width is small
-            if (ddLeft + ddWidth - (window.innerWidth - 16) >= 0) {
-              $(this).addClass('openLeft');
-            }
+        }
+        else {
+          if ($(".navbar-fixed").length) {
+            $(".navbar-fixed").sticky();
           }
-        });
-        $('.theme-layouts').find('.semi-dark').hide();
-        $('#customizer-navbar-colors').hide();
+        }
       }
 
-
-      // Horizontal Fixed Nav Sticky hight issue on small screens
-      // if (menuType == 'horizontal-menu') {
-      //   if (currentBreakpoint.name == 'sm' || currentBreakpoint.name == 'xs') {
-      //     if ($(".menu-fixed").length) {
-      //       $(".menu-fixed").unstick();
-      //     }
-      //   }
-      //   else {
-      //     if ($(".navbar-fixed").length) {
-      //       $(".navbar-fixed").sticky();
-      //     }
-      //   }
-      // }
-
       /********************************************
-       *             Searchable Menu               *
-       ********************************************/
+      *             Searchable Menu               *
+      ********************************************/
 
       function searchMenu(list) {
 
@@ -340,7 +274,8 @@
                   searchFilter.siblings('ul').children('li').show().children('a').show();
                 }
 
-              } else {
+              }
+              else {
                 searchFilter.show().parents('li').show().addClass('open').closest('li').children('a').show();
               }
             } else {
@@ -383,7 +318,8 @@
               $('.main-menu-header').show();
             }
           }
-        } else {
+        }
+        else {
           $('.menu-toggle').removeClass('is-active');
 
           // Hide menu header search when only menu icons are visible
@@ -466,7 +402,8 @@
 
           if (($('.main-menu').hasClass('menu-native-scroll') || $body.data('menu') == 'horizontal-menu')) {
             this.manualScroller.disable();
-          } else {
+          }
+          else {
             if ($('.main-menu').hasClass('menu-fixed'))
               this.manualScroller.enable();
           }
@@ -517,17 +454,20 @@
           if ($body.hasClass(menu)) {
             $body.removeClass(menu).addClass('vertical-overlay-menu');
           }
-        } else {
+        }
+        else {
           if ($body.hasClass('vertical-overlay-menu')) {
             $body.removeClass('vertical-overlay-menu').addClass(menu);
           }
         }
-      } else {
+      }
+      else {
         if (screen == 'sm' || screen == 'xs') {
           if ($body.hasClass(menu)) {
             $body.removeClass(menu).addClass('vertical-overlay-menu');
           }
-        } else {
+        }
+        else {
           if ($body.hasClass('vertical-overlay-menu')) {
             $body.removeClass('vertical-overlay-menu').addClass(menu);
           }
@@ -548,30 +488,8 @@
         dropdownMenu = $('li[data-menu="dropdown"]'),
         dropdownSubMenu = $('li[data-menu="dropdown-submenu"]');
 
-      if (screen === 'xl') {
+      if (screen == 'sm' || screen == 'xs') {
 
-        // Change body classes
-        $body.removeClass('vertical-layout vertical-overlay-menu fixed-navbar').addClass($body.data('menu'));
-
-        // Remove navbar-fix-top class on large screens
-        $('nav.header-navbar').removeClass('fixed-top');
-
-        // Change menu wrapper, menu container, menu navigation classes
-        menuWrapper.removeClass().addClass(menuWrapperClasses);
-
-        // Intitialize drill down menu for horizontal layouts
-        // --------------------------------------------------
-        this.drillDownMenu(screen);
-
-        $('a.dropdown-item.nav-has-children').on('click', function () {
-          event.preventDefault();
-          event.stopPropagation();
-        });
-        $('a.dropdown-item.nav-has-parent').on('click', function () {
-          event.preventDefault();
-          event.stopPropagation();
-        });
-      } else {
         // Change body classes
         $body.removeClass($body.data('menu')).addClass('vertical-layout vertical-overlay-menu fixed-navbar');
 
@@ -600,10 +518,29 @@
           $(this).parent().siblings().removeClass('open');
           $(this).parent().toggleClass('open');
         });
+      }
+      else {
+        // Change body classes
+        $body.removeClass('vertical-layout vertical-overlay-menu fixed-navbar').addClass($body.data('menu'));
 
-        $(".main-menu-content").find('li.active').parents('li').addClass('sidebar-group-active');
+        // Remove navbar-fix-top class on large screens
+        $('nav.header-navbar').removeClass('fixed-top');
 
-        $(".main-menu-content").find("li.active").closest("li.nav-item").addClass("open");
+        // Change menu wrapper, menu container, menu navigation classes
+        menuWrapper.removeClass().addClass(menuWrapperClasses);
+
+        // Intitialize drill down menu for horizontal layouts
+        // --------------------------------------------------
+        this.drillDownMenu(screen);
+
+        $('a.dropdown-item.nav-has-children').on('click', function () {
+          event.preventDefault();
+          event.stopPropagation();
+        });
+        $('a.dropdown-item.nav-has-parent').on('click', function () {
+          event.preventDefault();
+          event.stopPropagation();
+        });
       }
     },
 
@@ -619,28 +556,34 @@
           if (expanded === true) {
             if (menu == 'vertical-overlay-menu') {
               this.hide();
-            } else {
+            }
+            else {
               this.collapse();
             }
-          } else {
+          }
+          else {
             if (menu == 'vertical-overlay-menu') {
               this.open();
-            } else {
+            }
+            else {
               this.expand();
             }
           }
           break;
         case 'lg':
           if (expanded === true) {
-            if (menu == 'vertical-overlay-menu' || menu == 'vertical-menu-modern' || menu == 'horizontal-menu') {
+            if (menu == 'vertical-overlay-menu' || menu == 'vertical-menu-modern') {
               this.hide();
-            } else {
+            }
+            else {
               this.collapse();
             }
-          } else {
-            if (menu == 'vertical-overlay-menu' || menu == 'vertical-menu-modern' || menu == 'horizontal-menu') {
+          }
+          else {
+            if (menu == 'vertical-overlay-menu' || menu == 'vertical-menu-modern') {
               this.open();
-            } else {
+            }
+            else {
               this.expand();
             }
           }
@@ -726,7 +669,8 @@
           var fromTop;
           if ($this.css("border-top")) {
             fromTop = $this.position().top + parseInt($this.css("border-top"), 10);
-          } else {
+          }
+          else {
             fromTop = $this.position().top;
           }
           if ($body.data('menu') !== 'vertical-compact-menu') {
@@ -780,11 +724,13 @@
         var $listItem = $(this);
         if ($listItem.is('.disabled')) {
           e.preventDefault();
-        } else {
+        }
+        else {
           if ($body.hasClass('menu-collapsed') && $body.data('menu') != 'vertical-menu-modern') {
             e.preventDefault();
-          } else {
-            if ($listItem.has('ul').length) {
+          }
+          else {
+            if ($listItem.has('ul')) {
               if ($listItem.is('.open')) {
                 $listItem.trigger('close.app.menu');
               } else {
@@ -866,7 +812,8 @@
         var $listItem = $(this);
         if ($listItem.is('.disabled')) {
           e.preventDefault();
-        } else {
+        }
+        else {
           if ($listItem.has('ul')) {
             if ($listItem.is('.open')) {
               $listItem.removeClass('open');
@@ -978,10 +925,3 @@
   };
 
 })(window, document, jQuery);
-
-// We listen to the resize event
-window.addEventListener('resize', function() {
-  // We execute the same script as before
-  var vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', vh + "px");
-});

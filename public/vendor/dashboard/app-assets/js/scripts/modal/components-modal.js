@@ -3,7 +3,8 @@
     Description: Modals are streamlined, but flexible, dialog prompts with the minimum
 				required functionality and smart defaults.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Vuesax HTML Admin Template
+    Version: 1.1
     Author: Pixinvent
     Author URL: hhttp://www.themeforest.net/user/pixinvent
 ==========================================================================================*/

@@ -47,7 +47,7 @@
   &.divider-left{
     .divider-text{
       float: left;
-      padding-left: 0;
+
       &:before{
         display: none;
       }
@@ -62,7 +62,7 @@
   &.divider-right{
     .divider-text{
       float: right;
-      padding-right: 0;
+
       &:after{
        display: none;
       }

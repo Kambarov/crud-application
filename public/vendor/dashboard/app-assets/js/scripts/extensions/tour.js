@@ -2,7 +2,8 @@
 	File Name: tour.js
 	Description: tour
 	----------------------------------------------------------------------------------------
-	Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+	Item Name: Vuesax HTML Admin Template
+	Version: 1.1
 	Author: Pixinvent
 	Author URL: hhttp://www.themeforest.net/user/pixinvent
 ==========================================================================================*/

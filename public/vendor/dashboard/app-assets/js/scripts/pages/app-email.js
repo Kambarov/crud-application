@@ -7,8 +7,6 @@ $(function () {
   Font.whitelist = ['sofia', 'slabo', 'roboto', 'inconsolata', 'ubuntu'];
   Quill.register(Font, true);
 
-  // if it is not touch device
-  if (!$.app.menu.is_touch_device()){
   // Email left Sidebar
   if ($('.sidebar-menu-list').length > 0) {
     var sidebar_menu_list = new PerfectScrollbar(".sidebar-menu-list");
@@ -28,17 +26,8 @@ $(function () {
   if ($('.modal-dialog-scrollable .modal-body').length > 0) {
     var sidebar_menu_list = new PerfectScrollbar(".modal-dialog-scrollable .modal-body");
   }
-}
 
-  // if it is a touch device
-else {
-  $(".sidebar-menu-list").css("overflow", "scroll");
-  $(".email-user-list").css("overflow", "scroll");
-  $(".email-scroll-area").css("overflow", "scroll");
-  $(".modal-dialog-scrollable .modal-body").css("overflow", "scroll");
-}
-
-// Compose Modal - Reset Input Value on Click compose btn
+  // Compose Modal - Reset Input Value on Click compose btn
   $('.compose-btn .btn').on('click', function (e) {
       // all input forms
       $(".modal .modal-body input").val("");

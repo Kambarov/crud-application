@@ -2,7 +2,8 @@
   File Name: Components.js
   Description: For Generic Components.
   ----------------------------------------------------------------------------------------
-  Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+  Item Name: Vuesax HTML Admin Template
+  Version: 1.1
   Author: Pixinvent
   Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -57,8 +58,22 @@
     $(this).find("i").clone().appendTo(".dropdown-icon-wrapper .dropdown-toggle");
     $(".dropdown-icon-wrapper .dropdown-toggle .dropdown-item").removeClass("dropdown-item");
   });
-+
 
+
+  /***** Pagination *****/
+  // For Pagination styles
+  if ($(".pagination .page-item.prev-item").length > 0) {
+    $(".pagination .page-item.prev-item").next(".page-item").find(".page-link").css({
+      "border-top-left-radius": "20px",
+      "border-bottom-left-radius": "20px"
+    });
+  }
+  if ($(".pagination .page-item.next-item").length > 0) {
+    $(".pagination .page-item.next-item").prev(".page-item").find(".page-link").css({
+      "border-top-right-radius": "20px",
+      "border-bottom-right-radius": "20px"
+    });
+  }
 
   /***** Chips *****/
   // To close chips

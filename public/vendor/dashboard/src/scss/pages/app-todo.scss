@@ -22,7 +22,6 @@
       .todo-sidebar{
         width: $menu-expanded-width;
         height: calc(100vh - 13rem);
-        height: calc(var(--vh, 1vh) * 100 - 13rem);
         background-color: $white;
         border-top-left-radius: $border-radius-sm;
         border-bottom-left-radius: $border-radius-sm;
@@ -117,7 +116,6 @@
 
     // Right content area common css starts
     .content-right {
-      width: calc(100% - #{$menu-expanded-width});
       .content-wrapper{
         padding: 0;
       }
@@ -177,7 +175,6 @@
       .todo-task-list{
         position: relative;
         height: calc(100vh - 16.35rem);
-        height: calc(var(--vh, 1vh) * 100 - 16.35rem);
         .todo-task-list-wrapper{
           padding: 0;
           margin: 0;

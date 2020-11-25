@@ -2,7 +2,8 @@
     File Name: chart-chartjs.js
     Description: Chartjs Examples
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Vuesax HTML Admin Template
+    Version: 1.1
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -107,6 +108,10 @@ $(window).on("load", function () {
 
   // Create the chart
   var lineChart = new Chart(lineChartctx, lineChartconfig);
+
+
+
+
 
 
 

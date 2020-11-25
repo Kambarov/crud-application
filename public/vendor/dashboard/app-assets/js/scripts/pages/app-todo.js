@@ -2,7 +2,8 @@
     File Name: app-todo.js
     Description: app-todo
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Vuesax HTML Admin Template
+   Version: 1.1
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -12,9 +13,6 @@ $(function() {
 
   var $curr_title, $curr_desc, $curr_info, $curr_fav, $curr_chipVal;
 
-
-    // if it is not touch device
-    if (!$.app.menu.is_touch_device()){
   // --------------------------------------------
   // Sidebar menu scrollbar
   // --------------------------------------------
@@ -32,13 +30,8 @@ $(function() {
          theme: "dark"
       });
   }
-}
 
-  // if it is a touch device
-  else {
-    $(".sidebar-menu-list").css("overflow", "scroll");
-    $(".todo-task-list").css("overflow", "scroll");
-  }
+
   // --------------------------------------------
   // Info star click
   // --------------------------------------------

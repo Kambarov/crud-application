@@ -27,6 +27,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
+        'weekly_salary'
     ];
 
     /**
@@ -50,17 +52,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+    public function setPasswordAttribute($value)
+    {
+        return $this->attributes['password'] = bcrypt($value);
+    }
 
     public function posts()
     {
         return $this->hasMany(Post::class, 'author_id', 'id');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
+
+    public function isAdmin()
+    {
+        return $this->role_id === 1;
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

@@ -2,18 +2,13 @@
     File Name: app-ecommerce-shop.js
     Description: Ecommerce Shop
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Vuesax HTML Admin Template
+    Version: 1.1
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 $(document).ready(function () {
   "use strict";
-  // RTL Support
-  var direction = 'ltr';
-  if ($('html').data('textdirection') == 'rtl') {
-    direction = 'rtl';
-  }
-
   var sidebarShop = $(".sidebar-shop"),
     shopOverlay = $(".shop-content-overlay"),
     sidebarToggler = $(".shop-sidebar-toggler"),
@@ -42,7 +37,6 @@ $(document).ready(function () {
   if (slider) {
     noUiSlider.create(slider, {
       start: [51, 5000],
-      direction: direction,
       connect: true,
       tooltips: [true, true],
       format: wNumb({
@@ -57,9 +51,7 @@ $(document).ready(function () {
   // for select in ecommerce header
   if (priceFilter.length > 0) {
     priceFilter.select2({
-      minimumResultsForSearch: -1,
-      dropdownAutoWidth: true,
-      width: '100%'
+      minimumResultsForSearch: -1
     });
   }
 
@@ -80,22 +72,10 @@ $(document).ready(function () {
 
   // For View in cart
   cart.on("click", function () {
-    var $this = $(this),
-    addToCart = $this.find(".add-to-cart"),
-    viewInCart = $this.find(".view-in-cart");
-    if(addToCart.is(':visible')) {
-      addToCart.addClass("d-none");
-      viewInCart.addClass("d-inline-block");
-    }
-    else{
-      var href= viewInCart.attr('href');
-      window.location.href = href;
-    }
-  });
-
-  $(".view-in-cart").on('click', function(e){
-    e.preventDefault();
-  });
+    var $this = $(this)
+    $this.find(".add-to-cart").addClass("d-none");
+    $this.find(".view-in-cart").addClass("d-inline-block");
+  })
 
   // For Wishlist Icon
   wishlist.on("click", function () {
@@ -178,8 +158,11 @@ $(document).ready(function () {
 })
 // on window resize hide sidebar
 $(window).on("resize", function () {
-  if ($(window).outerWidth() >= 991) {
+  if ($(window).width() <= 991) {
     $(".sidebar-shop").removeClass("show");
     $(".shop-content-overlay").removeClass("show");
+  }
+  else {
+    $(".sidebar-shop").addClass("show");
   }
 });

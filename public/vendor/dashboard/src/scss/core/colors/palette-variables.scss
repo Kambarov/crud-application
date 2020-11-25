@@ -1,3 +1,4 @@
+
 // Overrides user components-variables
 @import "../../bootstrap/functions";
 
@@ -7,16 +8,22 @@
 
 // Google Color Palette defined: http://www.google.com/design/spec/style/color.html
 
-$white: ("base": #FFFFFF,
+$white: (
+  "base": #FFFFFF,
 );
-$black: ("base": #000000,
+$black: (
+  "base": #000000,
 );
-$dark: ("base": theme-color("dark"),
-  "gradient-bg": #640064);
-$light: ("base": theme-color("light"),
-  "gradient-bg": #640064);
-$primary: ("gradient-light": lighten(saturate(adjust-hue((theme-color("primary")), 25), 11.90), 13.33),
-  "light-badge": lighten(theme-color("primary"), 25%),
+$dark: (
+  "base": theme-color("dark"),
+  "gradient-bg": #640064
+);
+$light: (
+  "base": theme-color("light"),
+  "gradient-bg": #640064
+);
+$primary: (
+  "gradient-light": lighten(saturate(adjust-hue((theme-color("primary")), 25), 11.90), 13.33),
   "lighten-5": lighten(theme-color("primary"), 25%),
   "lighten-4": lighten(theme-color("primary"), 20%),
   "lighten-3": lighten(theme-color("primary"), 15%),
@@ -27,13 +34,14 @@ $primary: ("gradient-light": lighten(saturate(adjust-hue((theme-color("primary")
   "darken-2": darken(theme-color("primary"), 10%),
   "darken-3": darken(theme-color("primary"), 15%),
   "darken-4": darken(theme-color("primary"), 20%),
-  "accent-1": #BDFDFF,
-  "accent-2": #8AFBFF,
-  "accent-3": #57FAFF,
-  "accent-4": #3DF9FF,
-  "gradient-bg": #640064);
-$secondary: ("gradient-light": lighten(saturate(adjust-hue((theme-color("secondary")), 25), 11.90), 13.33),
-  "light-badge": lighten(theme-color("secondary"), 35%),
+  "accent-1":   #BDFDFF,
+  "accent-2":   #8AFBFF,
+  "accent-3":   #57FAFF,
+  "accent-4":   #3DF9FF,
+  "gradient-bg": #640064
+);
+$secondary: (
+  "gradient-light": lighten(saturate(adjust-hue((theme-color("secondary")), 25), 11.90), 13.33),
   "lighten-5": lighten(theme-color("secondary"), 25%),
   "lighten-4": lighten(theme-color("secondary"), 20%),
   "lighten-3": lighten(theme-color("secondary"), 15%),
@@ -44,9 +52,10 @@ $secondary: ("gradient-light": lighten(saturate(adjust-hue((theme-color("seconda
   "darken-2": darken(theme-color("secondary"), 10%),
   "darken-3": darken(theme-color("secondary"), 15%),
   "darken-4": darken(theme-color("secondary"), 20%),
-  "gradient-bg": #640064);
-$success: ("gradient-light": lighten(saturate(adjust-hue((theme-color("success")), 25), 11.90), 13.33),
-  "light-badge": lighten(theme-color("success"), 40%),
+  "gradient-bg": #640064
+);
+$success: (
+  "gradient-light": lighten(saturate(adjust-hue((theme-color("success")), 25), 11.90), 13.33),
   "lighten-5": lighten(theme-color("success"), 25%),
   "lighten-4": lighten(theme-color("success"), 20%),
   "lighten-3": lighten(theme-color("success"), 15%),
@@ -57,13 +66,14 @@ $success: ("gradient-light": lighten(saturate(adjust-hue((theme-color("success")
   "darken-2": darken(theme-color("success"), 10%),
   "darken-3": darken(theme-color("success"), 15%),
   "darken-4": darken(theme-color("success"), 20%),
-  "accent-1": #E1FFF1,
-  "accent-2": #AEFFD9,
-  "accent-3": #7BFFC1,
-  "accent-4": #62FFB5,
-  "gradient-bg": #0064fa);
-$info: ("gradient-light": lighten(saturate(adjust-hue((theme-color("info")), 25), 11.90), 13.33),
-  "light-badge": lighten(theme-color("info"), 40%),
+  "accent-1":   #E1FFF1,
+  "accent-2":   #AEFFD9,
+  "accent-3":   #7BFFC1,
+  "accent-4":   #62FFB5,
+  "gradient-bg": #0064fa
+);
+$info: (
+  "gradient-light": lighten(saturate(adjust-hue((theme-color("info")), 25), 11.90), 13.33),
   "lighten-5": lighten(theme-color("info"), 25%),
   "lighten-4": lighten(theme-color("info"), 20%),
   "lighten-3": lighten(theme-color("info"), 15%),
@@ -74,13 +84,14 @@ $info: ("gradient-light": lighten(saturate(adjust-hue((theme-color("info")), 25)
   "darken-2": darken(theme-color("info"), 10%),
   "darken-3": darken(theme-color("info"), 15%),
   "darken-4": darken(theme-color("info"), 20%),
-  "accent-1": #FEFFFF,
-  "accent-2": #CBF5FF,
-  "accent-3": #98ECFF,
-  "accent-4": #7FE7FF,
-  "gradient-bg": #640064);
-$warning: ("gradient-light": lighten(saturate(adjust-hue((theme-color("warning")), 25), 11.90), 13.33),
-  "light-badge": lighten(theme-color("warning"), 25%),
+  "accent-1":   #FEFFFF,
+  "accent-2":   #CBF5FF,
+  "accent-3":   #98ECFF,
+  "accent-4":   #7FE7FF,
+  "gradient-bg": #640064
+);
+$warning: (
+  "gradient-light": lighten(saturate(adjust-hue((theme-color("warning")), 25), 11.90), 13.33),
   "lighten-5": lighten(theme-color("warning"), 25%),
   "lighten-4": lighten(theme-color("warning"), 20%),
   "lighten-3": lighten(theme-color("warning"), 15%),
@@ -91,13 +102,14 @@ $warning: ("gradient-light": lighten(saturate(adjust-hue((theme-color("warning")
   "darken-2": darken(theme-color("warning"), 10%),
   "darken-3": darken(theme-color("warning"), 15%),
   "darken-4": darken(theme-color("warning"), 20%),
-  "accent-1": #FFF5EF,
-  "accent-2": #FFE5D8,
-  "accent-3": #FFF6F3,
-  "accent-4": #FFE3DA,
-  "gradient-bg": #fafafa);
-$danger: ("gradient-light": lighten(saturate(adjust-hue((theme-color("danger")), 25), 11.90), 13.33),
-  "light-badge": lighten(theme-color("danger"), 30%),
+  "accent-1":   #FFF5EF,
+  "accent-2":   #FFE5D8,
+  "accent-3":   #FFF6F3,
+  "accent-4":   #FFE3DA,
+  "gradient-bg": #fafafa
+);
+$danger: (
+  "gradient-light": lighten(saturate(adjust-hue((theme-color("danger")), 25), 11.90), 13.33),
   "lighten-5": lighten(theme-color("danger"), 25%),
   "lighten-4": lighten(theme-color("danger"), 20%),
   "lighten-3": lighten(theme-color("danger"), 15%),
@@ -108,13 +120,15 @@ $danger: ("gradient-light": lighten(saturate(adjust-hue((theme-color("danger")),
   "darken-2": darken(theme-color("danger"), 10%),
   "darken-3": darken(theme-color("danger"), 15%),
   "darken-4": darken(theme-color("danger"), 20%),
-  "accent-1": #FFEEF1,
-  "accent-2": #FFD6DB,
-  "accent-3": #FFECEE,
-  "accent-4": #FFD3D7,
-  "gradient-bg": #640064);
+  "accent-1":   #FFEEF1,
+  "accent-2":   #FFD6DB,
+  "accent-3":   #FFECEE,
+  "accent-4":   #FFD3D7,
+  "gradient-bg": #640064
+);
 
-$colors: ("white": $white,
+$colors: (
+  "white": $white,
   "black": $black,
   "dark": $dark,
   "light": $light,
@@ -123,4 +137,5 @@ $colors: ("white": $white,
   "success": $success,
   "info": $info,
   "warning": $warning,
-  "danger": $danger);
+  "danger": $danger
+);

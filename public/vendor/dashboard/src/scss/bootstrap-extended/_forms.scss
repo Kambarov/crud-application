@@ -129,9 +129,9 @@ textarea.form-control{
 
 // Custom-File-Input
 .custom-file-label{
-  padding: ($custom-file-padding-y) $custom-file-padding-x;
+  padding: ($custom-file-padding-y - 0.3) $custom-file-padding-x;
   &::after{
-    padding: ($custom-file-padding-y) $custom-file-padding-x;
+    padding: ($custom-file-padding-y - 0.3) $custom-file-padding-x;
     height: auto;
   }
 }
@@ -212,8 +212,6 @@ select.form-control {
         display: block;
         transition: all .25s ease-in-out;
         padding: .6rem;
-        pointer-events: none;
-        cursor: text;
         color: rgba($black, 0.4);
         font-size: .85rem;
         opacity: 0;
@@ -253,7 +251,7 @@ select.form-control {
 }
 
 
-/* Vuexy Custom Checkbox */
+/* VueSax Custom Checkbox */
 .vs-checkbox-con{
     position: relative;
     display: flex;
@@ -353,7 +351,7 @@ select.form-control {
 }
 
 
-/* Vuexy Custom Radio */
+/* VueSax Custom Radio */
 .vs-radio-con{
     position: relative;
     display: flex;
