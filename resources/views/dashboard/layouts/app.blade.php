@@ -117,11 +117,13 @@
                 </li>
             @endcan
 
-            <li class=" nav-item {{ request()->is('dashboard/posts*') ? 'active' : '' }}">
-                <a href="{{ route('dashboard.posts.index') }}">
-                    <i class="feather icon-book"></i><span class="menu-title">@lang('admin.posts.title')</span>
-                </a>
-            </li>
+            @can('view', 'posts')
+                <li class=" nav-item {{ request()->is('dashboard/posts*') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.posts.index') }}">
+                        <i class="feather icon-book"></i><span class="menu-title">@lang('admin.posts.title')</span>
+                    </a>
+                </li>
+            @endcan
 
             <li class="navigation-header">
                 <span>

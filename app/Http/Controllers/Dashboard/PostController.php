@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Posts\CreatePostRequest;
 use App\Http\Requests\Posts\UpdatePostRequest;
 use App\Models\Post;
+use App\Notifications\SendPost;
 use App\Services\PostService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class PostController extends Controller
 {
@@ -38,7 +40,10 @@ class PostController extends Controller
 
     public function store(CreatePostRequest $request)
     {
-        $this->service->create($request->validated(), auth()->user()->id);
+        $post = $this->service->create($request->validated(), auth()->user()->id);
+
+        Notification::route('telegram', $post->chat_id)
+            ->notify(new SendPost($post));
 
         $this->success(trans('admin.messages.created'));
         return redirect()->route('dashboard.posts.index');
@@ -51,7 +56,10 @@ class PostController extends Controller
 
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $this->service->update($request->validated(), $post, auth()->user()->id);
+        $post = $this->service->update($request->validated(), $post, auth()->user()->id);
+
+        Notification::route('telegram', $post->chat_id)
+            ->notify(new SendPost($post));
 
         $this->info(trans('admin.messages.updated'));
         return redirect()->route('dashboard.posts.index');

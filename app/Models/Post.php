@@ -7,6 +7,7 @@ use App\Http\Traits\HasTranslatableField;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
@@ -16,7 +17,10 @@ class Post extends Model
         'name',
         'slug',
         'description',
-        'user_id'
+        'author_id',
+        'short_link',
+        'bot_token',
+        'chat_id'
     ];
 
     protected $casts = [
@@ -32,5 +36,14 @@ class Post extends Model
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public static function generateShortLink()
+    {
+        do {
+            $short_link = Str::random(6);
+        } while(self::where('short_link', $short_link)->first());
+
+        return $short_link;
     }
 }

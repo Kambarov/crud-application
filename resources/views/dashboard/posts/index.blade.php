@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app')
 
-@section('title', trans('admin.news.title').' - ')
+@section('title', trans('admin.posts.title').' - ')
 
 @section('content')
     <div class="row" id="table-hover-animation">
@@ -8,10 +8,12 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">@lang('admin.news.data_table')</h4>
-                    <a href="{{ route('dashboard.news.create') }}" class="btn btn-outline-primary btn-xs btn-icon">
-                        <i class="feather icon-plus"></i> @lang('admin.add')
-                    </a>
+                    <h4 class="card-title">@lang('admin.posts.data_table')</h4>
+                    @can('create', 'posts')
+                        <a href="{{ route('dashboard.posts.create') }}" class="btn btn-outline-primary btn-xs btn-icon">
+                            <i class="feather icon-plus"></i> @lang('admin.add')
+                        </a>
+                    @endcan
                 </div>
                 <div class="card-content">
                     <div class="card-body">
@@ -21,43 +23,49 @@
                                 <tr>
                                     <th scope="col" width="50">ID</th>
                                     <th scope="col" width="150">@lang('admin.image')</th>
-                                    <th scope="col" width="200" class="text-center">@lang('admin.name')</th>
+                                    <th scope="col" class="text-center">@lang('admin.name')</th>
+                                    <th scope="col" class="text-center">@lang('admin.posts.author')</th>
                                     <th scope="col" class="text-right">@lang('admin.actions')</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if(count($news) == 0)
-                                    <div class="alert alert-primary">
-                                        <i class="feather icon-alert-octagon"></i> @lang('admin.no_data')
-                                    </div>
-                                @else
-                                    @foreach($news as $item)
+                                    @forelse($posts as $item)
                                         <tr>
                                             <th scope="row">{{ $item->id }}</th>
                                             <td width="150">
-                                                <img src="{{ $item->media->url }}" style="width: 150px; height: auto" alt="{{ $item->name }}">
+                                                <img src="{{ $item->image->url }}" style="width: 150px; height: auto" alt="{{ $item->name }}">
                                             </td>
                                             <td class="text-center">
                                                 {{ $item->name }}
                                             </td>
+                                            <td class="text-center">
+                                                {{ $item->author->name }}
+                                            </td>
                                             <td class="text-right">
-                                                <a href="{{ route('dashboard.news.edit', [$item->id]) }}" class="btn btn-icon btn-warning
-                                                 btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="@lang('admin.edit')">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
+                                                @can('update', 'posts')
+                                                    <a href="{{ route('dashboard.posts.edit', [$item->id]) }}" class="btn btn-icon btn-warning
+                                                     btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="@lang('admin.edit')">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                @endcan
 
-                                                <a href="{{ route('dashboard.news.destroy', $item->id) }}" onclick="return confirm('@lang('admin.are_you_sure')')"
-                                                   class="btn btn-icon btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title=""
-                                                   data-original-title="@lang('admin.delete')">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
+                                                @can('delete', 'posts')
+                                                    <a href="{{ route('dashboard.posts.destroy', $item->id) }}" onclick="return confirm('@lang('admin.are_you_sure')')"
+                                                       class="btn btn-icon btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title=""
+                                                       data-original-title="@lang('admin.delete')">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                @endcan
                                             </td>
                                         </tr>
-                                    @endforeach
-                                @endif
+                                    @empty
+                                        <div class="alert alert-primary">
+                                            <i class="feather icon-alert-octagon"></i> @lang('admin.no_data')
+                                        </div>
+                                    @endforelse
                                 </tbody>
                             </table>
-                            {{ $news->links() }}
+                            {{ $posts->links() }}
                         </div>
                     </div>
                 </div>

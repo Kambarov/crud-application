@@ -18,7 +18,9 @@ class UpdatePostRequest extends FormRequest
             'name.*'        => 'required|string',
             'description'   => 'required|array',
             'description.*' => 'required|string',
-            'image'         => 'nullable|image'
+            'image'         => 'nullable|image',
+            'chat_id'       => 'nullable|numeric',
+            'bot_token'     => 'required_with:chat_id|string'
         ];
     }
 }

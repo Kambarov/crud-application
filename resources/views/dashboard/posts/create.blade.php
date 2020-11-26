@@ -12,11 +12,11 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-name">@lang('admin.add')</h4>
-                        <a href="{{ route('dashboard.news.index') }}" class="btn btn-outline-primary">@lang('admin.back')</a>
+                        <a href="{{ route('dashboard.posts.index') }}" class="btn btn-outline-primary">@lang('admin.back')</a>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form method="post" action="{{ route('dashboard.news.store') }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('dashboard.posts.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12">
@@ -99,6 +99,48 @@
                                             </div>
                                         </div>
 
+                                        <div class="controls">
+                                            <button id="send_to_telegram" type="button" class="btn btn-outline-primary">@lang('admin.posts.send_to_telegram')</button>
+                                            <button id="remove" type="button" class="btn btn-outline-danger">@lang('admin.posts.remove')</button>
+
+                                            <br>
+                                            <br>
+                                            <div id="telegram_section" class="controls">
+                                                <div class="controls">
+                                                    <label>@lang('admin.posts.chat_id')</label>
+                                                    <fieldset class="form-group position-relative has-icon-left input-divider-left">
+                                                        <input type="number" name="chat_id" class="form-control @error('chat_id') is-invalid @enderror"
+                                                               value="{{ old('chat_id') }}" placeholder="@lang('admin.posts.chat_id')">
+                                                        <div class="form-control-position">
+                                                            <i class="feather icon-link"></i>
+                                                        </div>
+                                                    </fieldset>
+                                                    @error('chat_id')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                                <div class="controls">
+                                                    <label>@lang('admin.posts.bot_token')</label>
+                                                    <fieldset class="form-group position-relative has-icon-left input-divider-left">
+                                                        <input type="text" name="bot_token" class="form-control @error('bot_token') is-invalid @enderror"
+                                                               value="{{ old('bot_token') }}" placeholder="@lang('admin.posts.bot_token')">
+                                                        <div class="form-control-position">
+                                                            <i class="feather icon-zap"></i>
+                                                        </div>
+                                                    </fieldset>
+                                                    @error('bot_token')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+
+                                                <br>
+                                            </div>
+                                        </div>
+
                                         <label>@lang('admin.image')</label>
                                         <div class="custom-file">
                                             <input id="uploadImage" required class="custom-file-input" type="file" name="image" onchange="PreviewImage();" />
@@ -127,6 +169,22 @@
 
     <script>
         $(document).ready(function () {
+            $('#telegram_section').hide();
+            $('#remove').hide();
+            $('#send_to_telegram').show();
+
+            $('#send_to_telegram').click(function () {
+                $('#telegram_section').show();
+                $('#remove').show();
+                $('#send_to_telegram').hide();
+            });
+
+            $('#remove').click(function () {
+                $('#telegram_section').hide();
+                $('#remove').hide();
+                $('#send_to_telegram').show();
+            });
+
             $('#description_ru').summernote({
                 height: 300,
             });

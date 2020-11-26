@@ -20,14 +20,14 @@ class PostService
 
     public function all()
     {
-        return Post::with('image')
+        return Post::with('image', 'author')
             ->latest('id')
             ->paginate(config('app.per_page'));
     }
 
     public function getAuthorPost($userId)
     {
-        return Post::with('image')
+        return Post::with('image', 'author')
             ->latest('id')
             ->where('author_id', $userId)
             ->paginate(config('app.per_page'));
@@ -36,9 +36,13 @@ class PostService
     public function create(array $attributes, $userId)
     {
         $attributes['slug'] = Str::slug($attributes['name']['ru']);
-        $attributes['user_id'] = $userId;
+        $attributes['author_id'] = $userId;
 
         $post = Post::create($attributes);
+
+        $post->update([
+            'short_link' => $post->generateShortLink()
+        ]);
 
         $file = $this->image->uploadFile($attributes['image'], 'post');
 
@@ -46,13 +50,15 @@ class PostService
             'url' => '/'.$file
         ]);
 
+        $post->load('image');
+
         return $post;
     }
 
     public function update(array $attributes, Post $post, $userId)
     {
         $attributes['slug'] = Str::slug($attributes['name']['ru']);
-        $attributes['user_id'] = $userId;
+        $attributes['author_id'] = $userId;
 
         $post->update($attributes);
 

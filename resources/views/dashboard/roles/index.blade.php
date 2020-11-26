@@ -8,9 +8,11 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">@lang('admin.roles.data_table')</h4>
-                    <a href="{{ route('dashboard.roles.create') }}" class="btn btn-outline-primary btn-xs btn-icon">
-                        <i class="feather icon-plus"></i> @lang('admin.add')
-                    </a>
+                    @can('create', 'roles')
+                        <a href="{{ route('dashboard.roles.create') }}" class="btn btn-outline-primary btn-xs btn-icon">
+                            <i class="feather icon-plus"></i> @lang('admin.add')
+                        </a>
+                    @endcan
                 </div>
                 <div class="card-content">
                     <div class="card-body">

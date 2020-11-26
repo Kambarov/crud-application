@@ -18,6 +18,9 @@ class CreatePostsTable extends Migration
             $table->json('name');
             $table->string('slug');
             $table->json('description');
+            $table->string('short_link')->nullable()->unique();
+            $table->bigInteger('chat_id')->nullable();
+            $table->string('bot_token')->nullable();
             $table->foreignId('author_id')
                 ->constrained('users')
                 ->cascadeOnDelete();

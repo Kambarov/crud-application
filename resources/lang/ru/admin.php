@@ -12,7 +12,10 @@ return [
     'save' => 'Сохранить',
     'cancel' => 'Отменить',
 
+    'no_data' => 'Нет данных',
+
     'name' => 'Название',
+    'description' => 'Описание',
     'image' => 'Изображение',
     'only_types' => 'Только типы: jpeg, png, bmp, gif, svg, or webp',
 
@@ -37,7 +40,12 @@ return [
 
     'posts' => [
         'title' => 'Посты',
-        'data_table' => 'Таблица постов'
+        'data_table' => 'Таблица постов',
+        'author' => 'Автор',
+        'chat_id' => 'ID чата',
+        'bot_token' => 'Токен бота',
+        'remove' => 'Убрать',
+        'send_to_telegram' => 'Отправить в телеграм'
     ],
 
     'roles' => [

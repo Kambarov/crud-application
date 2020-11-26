@@ -9,9 +9,11 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">@lang('admin.users.data_table')</h4>
-                    <a href="{{ route('dashboard.users.create') }}" class="btn btn-outline-primary btn-xs btn-icon">
-                        <i class="feather icon-plus"></i> @lang('admin.add')
-                    </a>
+                    @can('create', 'users')
+                        <a href="{{ route('dashboard.users.create') }}" class="btn btn-outline-primary btn-xs btn-icon">
+                            <i class="feather icon-plus"></i> @lang('admin.add')
+                        </a>
+                    @endcan
                 </div>
                 <div class="card-content">
                     <div class="card-body">
@@ -56,11 +58,11 @@
                                                 @endcan
 
                                                 @can('delete', 'users')
-                                                    <button onclick="return confirm('@lang('admin.are_you_sure')')"
+                                                    <a href="{{ route('dashboard.users.destroy', $item->id) }}" onclick="return confirm('@lang('admin.are_you_sure')')"
                                                        class="btn btn-icon btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title=""
                                                        data-original-title="@lang('admin.delete')">
                                                         <i class="fa fa-trash"></i>
-                                                    </button>
+                                                    </a>
                                                 @endcan
                                             </td>
                                         </tr>

@@ -18,7 +18,9 @@ class CreatePostRequest extends FormRequest
             'name.*'        => 'required|string',
             'description'   => 'required|array',
             'description.*' => 'required|string',
-            'image'         => 'required|image'
+            'image'         => 'required|image',
+            'chat_id'       => 'nullable|numeric',
+            'bot_token'     => 'required_with:chat_id|string'
         ];
     }
 }
