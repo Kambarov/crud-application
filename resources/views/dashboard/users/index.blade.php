@@ -35,7 +35,7 @@
                                         <tr>
                                             <th scope="row">{{ $item->id }}</th>
                                             <td class="text-center">
-                                                <img src="{{ $item->image->url }}" alt="{{ $item->name }}">
+                                                <img src="{{ $item->image->url }}" alt="{{ $item->name }}" style="width: 150px; height: auto">
                                             </td>
                                             <td class="text-center">
                                                 {{ $item->name }}

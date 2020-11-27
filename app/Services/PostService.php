@@ -50,8 +50,6 @@ class PostService
             'url' => '/'.$file
         ]);
 
-        $post->load('image');
-
         return $post;
     }
 

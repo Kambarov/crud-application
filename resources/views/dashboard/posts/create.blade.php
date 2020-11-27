@@ -39,7 +39,7 @@
                                                         <div class="controls">
                                                             <fieldset class="form-group position-relative has-icon-left input-divider-left">
                                                                 <input type="text" name="name[ru]" class="form-control @error('name.ru') is-invalid @enderror"
-                                                                       value="{{ old('name.ru') }}" required placeholder="@lang('admin.name') RU">
+                                                                       value="{{ old('name.ru') }}"  placeholder="@lang('admin.name') RU">
                                                                 <div class="form-control-position">
                                                                     <i class="feather icon-help-circle"></i>
                                                                 </div>
@@ -55,7 +55,7 @@
                                                         <div class="controls">
                                                             <fieldset class="form-group position-relative">
                                                                 <textarea class="form-control @error('description.ru') is-invalid @enderror" name="description[ru]"
-                                                                          placeholder="@lang('admin.description') RU" required id="description_ru">{{ old('description.ru') }}</textarea>
+                                                                          placeholder="@lang('admin.description') RU"  id="description_ru">{{ old('description.ru') }}</textarea>
                                                             </fieldset>
                                                             @error('description.ru')
                                                             <div class="invalid-feedback">
@@ -70,7 +70,7 @@
                                                         <div class="controls">
                                                             <fieldset class="form-group position-relative has-icon-left input-divider-left">
                                                                 <input type="text" name="name[en]" class="form-control @error('name.en') is-invalid @enderror"
-                                                                       value="{{ old('name.en') }}" required placeholder="@lang('admin.name') EN">
+                                                                       value="{{ old('name.en') }}"  placeholder="@lang('admin.name') EN">
                                                                 <div class="form-control-position">
                                                                     <i class="feather icon-help-circle"></i>
                                                                 </div>
@@ -86,7 +86,7 @@
                                                         <div class="controls">
                                                             <fieldset class="form-group position-relative">
                                                                 <textarea class="form-control @error('description.en') is-invalid @enderror" name="description[en]"
-                                                                          placeholder="@lang('admin.description') EN" required id="description_en">{{ old('description.en') }}</textarea>
+                                                                          placeholder="@lang('admin.description') EN"  id="description_en">{{ old('description.en') }}</textarea>
                                                             </fieldset>
                                                             @error('description.en')
                                                             <div class="invalid-feedback">
@@ -143,7 +143,7 @@
 
                                         <label>@lang('admin.image')</label>
                                         <div class="custom-file">
-                                            <input id="uploadImage" required class="custom-file-input" type="file" name="image" onchange="PreviewImage();" />
+                                            <input id="uploadImage"  class="custom-file-input" type="file" name="image" onchange="PreviewImage();" />
                                             <label class="custom-file-label">@lang('admin.only_types')</label>
                                         </div>
                                         <br><br>

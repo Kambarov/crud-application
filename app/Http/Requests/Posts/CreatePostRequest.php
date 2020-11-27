@@ -20,7 +20,7 @@ class CreatePostRequest extends FormRequest
             'description.*' => 'required|string',
             'image'         => 'required|image',
             'chat_id'       => 'nullable|numeric',
-            'bot_token'     => 'required_with:chat_id|string'
+            'bot_token'     => 'nullable|string'
         ];
     }
 }

@@ -22,6 +22,8 @@ class RoleController extends Controller
 
     public function index()
     {
+        $this->authorize('view', 'roles');
+
         $roles = $this->service->all(auth()->user()->role_id);
 
         return view('dashboard.roles.index', compact('roles'));
@@ -29,6 +31,8 @@ class RoleController extends Controller
 
     public function create()
     {
+        $this->authorize('create', 'roles');
+
         return view('dashboard.roles.create');
     }
 
@@ -42,6 +46,8 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
+        $this->authorize('update', 'roles');
+
         return view('dashboard.roles.edit', compact('role'));
     }
 
@@ -55,6 +61,8 @@ class RoleController extends Controller
 
     public function destroy(Role $role)
     {
+        $this->authorize('delete', 'roles');
+
         $this->service->delete($role);
 
         $this->info(trans('admin.messages.deleted'));

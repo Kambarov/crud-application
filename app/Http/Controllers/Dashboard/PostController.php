@@ -25,6 +25,8 @@ class PostController extends Controller
 
     public function index()
     {
+        $this->authorize('view', 'posts');
+
         if (auth()->user()->role_id === 1 || auth()->user()->role_id === 2)
             $posts = $this->service->all();
         else
@@ -35,6 +37,7 @@ class PostController extends Controller
 
     public function create()
     {
+        $this->authorize('create', 'posts');
         return view('dashboard.posts.create');
     }
 
@@ -42,15 +45,18 @@ class PostController extends Controller
     {
         $post = $this->service->create($request->validated(), auth()->user()->id);
 
-        Notification::route('telegram', $post->chat_id)
-            ->notify(new SendPost($post));
+        if ($post->chat_id)
+            Notification::route('telegram', $post->chat_id)
+                ->notify(new SendPost($post));
 
+//        return $post;
         $this->success(trans('admin.messages.created'));
         return redirect()->route('dashboard.posts.index');
     }
 
     public function edit(Post $post)
     {
+        $this->authorize('update', 'posts');
         return view('dashboard.posts.edit', compact('post'));
     }
 
@@ -58,8 +64,9 @@ class PostController extends Controller
     {
         $post = $this->service->update($request->validated(), $post, auth()->user()->id);
 
-        Notification::route('telegram', $post->chat_id)
-            ->notify(new SendPost($post));
+        if ($post->chat_id)
+            Notification::route('telegram', $post->chat_id)
+                ->notify(new SendPost($post));
 
         $this->info(trans('admin.messages.updated'));
         return redirect()->route('dashboard.posts.index');
@@ -67,6 +74,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', 'posts');
         $this->service->delete($post);
 
         $this->info(trans('admin.messages.deleted'));

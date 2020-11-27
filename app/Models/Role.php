@@ -10,7 +10,8 @@ use phpDocumentor\Reflection\Types\Boolean;
 
 class Role extends Model
 {
-    use HasTranslatableField;
+    use HasFactory,
+        HasTranslatableField;
 
     protected $fillable = [
         'name',

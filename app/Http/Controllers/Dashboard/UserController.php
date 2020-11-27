@@ -23,6 +23,8 @@ class UserController extends Controller
 
     public function index()
     {
+        $this->authorize('view', 'users');
+
         $users = $this->service->all(auth()->user()->role_id);
 
         return view('dashboard.users.index', compact('users'));
@@ -30,6 +32,7 @@ class UserController extends Controller
 
     public function create()
     {
+        $this->authorize('create', 'users');
         return view('dashboard.users.create');
     }
 
@@ -43,12 +46,13 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        $this->authorize('update', 'users');
         return view('dashboard.users.edit', compact('user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $this->service->update($request->validated(), $user);
+         $this->service->update($request->validated(), $user);
 
         $this->info(trans('admin.messages.updated'));
         return redirect()->route('dashboard.users.index');
@@ -56,6 +60,7 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        $this->authorize('delete', 'users');
         $this->service->delete($user);
 
         $this->info(trans('admin.messages.deleted'));
