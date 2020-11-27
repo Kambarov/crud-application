@@ -2,8 +2,7 @@
     File Name: fullcalendar.js
     Description: Fullcalendar
     --------------------------------------------------------------------------------------
-    Item Name: Vuesax HTML Admin Template
-    Version: 1.1
+    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -53,9 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     },
     header: {
-      left: "",
-      center: " prev,title,next",
-      right: "dayGridMonth timeGridWeek timeGridDay addNew"
+      left: "addNew",
+      center: "dayGridMonth,timeGridWeek,timeGridDay",
+      right: "prev,title,next"
     },
     displayEventTime: false,
     navLinks: true,
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
   calendar.render();
 
   // appends bullets to left class of header
-  $("#basic-examples .fc-left").append(categoryBullets);
+  $("#basic-examples .fc-right").append(categoryBullets);
 
   // Close modal on submit button
   $(".modal-calendar .cal-submit-event").on("click", function () {

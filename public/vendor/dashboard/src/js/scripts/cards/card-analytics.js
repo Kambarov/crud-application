@@ -2,8 +2,7 @@
     File Name: card-statistics.js
     Description: Card-statistics page content with Apexchart Examples
     ----------------------------------------------------------------------------------------
-    Item Name: Vuesax HTML Admin Template
-    Version: 1.1
+    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -505,6 +504,7 @@ $(window).on("load", function(){
             bar: {
                 columnWidth: '45%',
                 distributed: true,
+                endingShape: 'rounded'
             }
         },
         tooltip: {

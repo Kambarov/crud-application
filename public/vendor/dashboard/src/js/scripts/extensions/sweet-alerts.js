@@ -2,8 +2,7 @@
 	File Name: sweet-alerts.js
 	Description: A beautiful replacement for javascript alerts
 	----------------------------------------------------------------------------------------
-	Item Name: Vuesax HTML Admin Template
-	Version: 1.1
+	Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
 	Author: Pixinvent
 	Author URL: hhttp://www.themeforest.net/user/pixinvent
 ==========================================================================================*/

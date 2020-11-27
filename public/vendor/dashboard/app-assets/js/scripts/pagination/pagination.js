@@ -3,7 +3,7 @@
     Description: Provide pagination links for your site or app with the multi-page
                 pagination component.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuesax HTML Admin Template
+    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
     Author: Pixinvent
     Author URL: hhttp://www.themeforest.net/user/pixinvent
 ==========================================================================================*/

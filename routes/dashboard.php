@@ -8,6 +8,8 @@ use App\Http\Controllers\Dashboard\UserController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
+Route::get('locale/{lang}', [DashboardController::class, 'setLocale'])->name('dashboard.setLocale');
+
 Route::resource('posts', PostController::class, ['as' => 'dashboard'])
     ->except('show');
 Route::get('posts/delete/{post}', [PostController::class, 'destroy'])->name('dashboard.posts.destroy');

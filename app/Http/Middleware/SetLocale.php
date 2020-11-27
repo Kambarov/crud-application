@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cookie;
 
 class SetLocale
 {
@@ -14,8 +16,12 @@ class SetLocale
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
+        if (Cookie::has('locale')) {
+            $locale = Cookie::get('locale');
+            App::setLocale($locale);
+        }
         return $next($request);
     }
 }

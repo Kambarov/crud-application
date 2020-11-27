@@ -2,8 +2,7 @@
     File Name: chart-apex.js
     Description: Apexchart Examples
     ----------------------------------------------------------------------------------------
-    Item Name: Vuesax HTML Admin Template
-    Version: 1.1
+    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -18,6 +17,12 @@ $(document).ready(function () {
     $label_color_light = '#dae1e7';
 
   var themeColors = [$primary, $success, $danger, $warning, $info];
+
+  // RTL Support
+  var yaxis_opposite = false;
+  if($('html').data('textdirection') == 'rtl'){
+    yaxis_opposite = true;
+  }
 
   // Line Chart
   // ----------------------------------
@@ -55,6 +60,7 @@ $(document).ready(function () {
     },
     yaxis: {
       tickAmount: 5,
+      opposite: yaxis_opposite
     }
   }
   var lineChart = new ApexCharts(
@@ -93,6 +99,9 @@ $(document).ready(function () {
         "2019-09-18T03:00:00", "2019-09-18T04:00:00", "2019-09-18T05:00:00",
         "2019-09-18T06:00:00"
       ],
+    },
+    yaxis: {
+      opposite: yaxis_opposite
     },
     tooltip: {
       x: {
@@ -148,7 +157,8 @@ $(document).ready(function () {
     yaxis: {
       title: {
         text: '$ (thousands)'
-      }
+      },
+      opposite: yaxis_opposite
     },
     fill: {
       opacity: 1
@@ -191,6 +201,9 @@ $(document).ready(function () {
     xaxis: {
       categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan', 'United States', 'China', 'Germany'],
       tickAmount: 5
+    },
+    yaxis: {
+      opposite: yaxis_opposite
     }
   }
   var barChart = new ApexCharts(
@@ -258,7 +271,8 @@ $(document).ready(function () {
       tickAmount: 5,
       title: {
         text: 'Points'
-      }
+      },
+      opposite: yaxis_opposite
     },
     tooltip: {
       shared: true,
@@ -538,7 +552,8 @@ $(document).ready(function () {
       tickAmount: 5,
       tooltip: {
         enabled: true
-      }
+      },
+      opposite: yaxis_opposite
     }
   }
   var candleStickChart = new ApexCharts(
@@ -619,6 +634,7 @@ $(document).ready(function () {
     yaxis: {
       max: 70,
       tickAmount: 5,
+      opposite: yaxis_opposite
     },
     theme: {
       palette: 'palette2'
@@ -756,7 +772,8 @@ $(document).ready(function () {
       tickAmount: 10
     },
     yaxis: {
-      tickAmount: 7
+      tickAmount: 7,
+      opposite: yaxis_opposite
     }
   }
   var scatterChart = new ApexCharts(
@@ -981,6 +998,9 @@ $(document).ready(function () {
       })
     }
     ],
+    yaxis: {
+      opposite: yaxis_opposite
+    }
   }
   var heatChart = new ApexCharts(
     document.querySelector("#heat-map-chart"),

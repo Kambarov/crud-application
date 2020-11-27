@@ -2,8 +2,7 @@
 //     File Name: content.scss
 //     Description: Page content level SCSS for different screen size, layout and device.
 //     ----------------------------------------------------------------------------------------------
-//     Item Name: Vuesax HTML Admin Template
-//     Version: 1.1
+//     Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
 //     Author: PIXINVENT
 //     Authuseror URL: http://www.themeforest.net//pixinvent
 // ================================================================================================
@@ -59,6 +58,7 @@ html {
                   .content-wrapper {
                     margin-top: 0;
                     height: calc(100vh - 13rem);
+                    height: calc(var(--vh, 1vh) * 100 - 13rem);
                   }
                 }
             }
@@ -104,43 +104,46 @@ html {
 
         // for static navbar
         &.navbar-static{
+          .main-menu{
+            top: 0;
+          }
           .app-content{
-          .navbar-container{
-            padding-left: 2.2rem;
-            padding-right: 1.2rem;
-          }
-          .content-wrapper{
-            padding: 2.2rem;
-            margin-top: 0;
-            padding-top: 1rem;
-          }
-          .content-area-wrapper{
-            margin-top: 1rem;
+            .navbar-container{
+              padding-left: 2.2rem;
+              padding-right: 1.2rem;
+            }
+            .content-wrapper{
+              padding: 2.2rem;
+              margin-top: 0;
+              padding-top: 1rem;
+            }
+            .content-area-wrapper{
+              margin-top: 1rem;
+            }
           }
         }
-      }
 
         // for sticky navbar
         &.navbar-sticky{
           .app-content{
-          .navbar-container{
-            padding-left: 2.2rem;
-            padding-right: 1rem;
-            .search-input{
-              .search-list{
-                &.show{
-                  width: 98%;
-                  left: 1%;
+            .navbar-container{
+              padding-left: 2.2rem;
+              padding-right: 1rem;
+              .search-input{
+                .search-list{
+                  &.show{
+                    width: 98%;
+                    left: 1%;
+                  }
                 }
               }
             }
-          }
-          .content-wrapper{
-            padding: 2.2rem;
-            margin-top: 4.65rem;
+            .content-wrapper{
+              padding: 2.2rem;
+              margin-top: 4.65rem;
+            }
           }
         }
-      }
 
       // navbar search width for sticky and static navbar
       &.navbar-static,
@@ -169,53 +172,59 @@ html {
         }
       }
 
-        // paragraph line-height
-        p{
-            line-height: 1.5rem;
-        }
+      // paragraph line-height
+      p{
+          line-height: 1.5rem;
+      }
 
-        &.bg-full-screen-image {
-            background: url(../../app-assets/images/pages/vuesax-login-bg.jpg) no-repeat center center;
-            background-size: cover;
-        }
+      &.bg-full-screen-image {
+          background: url(../../app-assets/images/pages/vuexy-login-bg.jpg) no-repeat center center;
+          background-size: cover;
+      }
 
-        /*
-        * Blank page
-        */
+      /*
+      * Blank page
+      */
 
-        &.blank-page {
-            .content{
-                margin-left: 0;
-                // overflow-x hidden, overflow for y in sm screen issue resolved default
-                &.app-content{
-                    overflow: overlay;
-                    overflow-x: hidden;
-                }
+      &.blank-page {
+        .content{
+          margin-left: 0;
+          // overflow-x hidden, overflow for y in sm screen issue resolved default
+          &.app-content{
+            overflow: overlay;
+            overflow-x: hidden;
+            // remove white space on top by header-navbar-shadow class
+            .header-navbar-shadow{
+              display: none;
             }
-            // blank page content-wrapper
-            .content-wrapper {
-                padding: 0 !important;
-                margin-top: 0;
-                // content to be in center horizontally and vertically
-                .flexbox-container {
-                    display: flex;
-                    align-items: center;
-                    height: 100vh;
-                    justify-content: center;
-                }
-            }
-        }
-         //Remove left margin for 1 column layout
-        &[data-col="1-column"] {
-          .content,.footer {
-             margin-left: 0px !important;
           }
         }
+        // blank page content-wrapper
+        .content-wrapper {
+            padding: 0 !important;
+            margin-top: 0;
+            // content to be in center horizontally and vertically
+            .flexbox-container {
+                display: flex;
+                align-items: center;
+                height: 100vh;
+                height: calc(var(--vh, 1vh) * 100);
+                justify-content: center;
+            }
+        }
+      }
+      
+      //Remove left margin for 1 column layout
+      &[data-col="1-column"] {
+        .content,.footer {
+          margin-left: 0px !important;
+        }
+      }
     }
     .pace {
-        .pace-progress {
-            background: $primary;
-        }
+      .pace-progress {
+        background: $primary;
+      }
     }
 }
 
@@ -232,11 +241,11 @@ html {
     body {
         // Normal sidebar
         .content-right {
-            width: calc(100% - #{$sidebar-width});
+            width: calc(100vw - (100vw - 100%) - #{$sidebar-width});
             float: right;
         }
         .content-left {
-            width: calc(100% - #{$sidebar-width});
+            width: calc(100vw - (100vw - 100%) - #{$sidebar-width});
             float: left;
         }
         // Detached sidebar
@@ -263,12 +272,6 @@ html {
         margin-left: -$sidebar-width;
         width: $sidebar-width !important;
         margin-top: $navbar-height + 1;
-    }
-    //left sticky sidebar
-    [data-col="content-left-sidebar"] {
-        .sticky-wrapper {
-            float: left;
-        }
     }
 }
 

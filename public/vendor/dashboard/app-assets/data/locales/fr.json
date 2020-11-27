@@ -2,6 +2,12 @@
   "Dashboard": "Tableau de bord",
   "Analytics": "Analytique",
   "eCommerce": "commerce électronique",
+  "Apps": "Apps",
+  "UI Elements": "Éléments d'interface utilisateur",
+  "Forms & Tables": "Formulaires et tableaux",
+  "Pages": "Des pages",
+  "Charts & Maps": "Graphiques et cartes",
+  "Others": "Autres",
   "Email": "Email",
   "Chat": "Bavarder",
   "Todo": "Faire",
@@ -32,7 +38,7 @@
   "Icons": "Les icônes",
   "Feather": "Plume",
   "Font Awesome": "Police géniale",
-  "Card": "Carte",
+  "Cards": "Carte",
   "Basic": "De base",
   "Advance": "Avance",
   "Statistics": "Statistiques",
@@ -115,5 +121,10 @@
   "Third Level": "Troisième niveau",
   "Disabled Menu": "Menu désactivé",
   "Documentation": "Documentation",
-  "Raise Support": "Augmenter le soutien"
+  "Raise Support": "Augmenter le soutien",
+  "Miscellaneous": "Divers",
+  "Extensions": "Les extensions",
+  "Media Player": "Lecteur multimédia",
+  "agGrid Table": "agGrid Table",
+  "User Settings": "Paramètres utilisateur"
 }

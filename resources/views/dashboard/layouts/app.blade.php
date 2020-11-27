@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
+<html class="loading" lang="{{ app()->getLocale() }}" data-textdirection="ltr">
 <!-- BEGIN: Head-->
 
 <head>
@@ -17,7 +17,7 @@
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="/vendor/dashboard/app-assets/vendors/css/vendors.min.css">
 {{--    <link rel="stylesheet" type="text/css" href="/vendor/dashboard/app-assets/vendors/css/ui/prism.min.css">--}}
-    <!-- END: Vendor CSS-->
+<!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="/vendor/dashboard/app-assets/css/bootstrap.css">
@@ -57,18 +57,35 @@
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">
-                    <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                    <li class="dropdown dropdown-language nav-item">
+                        <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="flag-icon flag-icon-us"></i><span class="selected-language">{{ app()->getLocale() === 'ru' ? 'Русский' : 'English' }}</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-flag">
+                            <a class="dropdown-item" href="{{ route('dashboard.setLocale', 'en') }}" data-language="en"><i class="flag-icon flag-icon-us"></i> English</a>
+                            <a class="dropdown-item" href="{{ route('dashboard.setLocale', 'ru') }}" data-language="ru"><i class="flag-icon flag-icon-ru"></i> Русский</a>
+                        </div>
+                    </li>
+                    <li class="dropdown dropdown-user nav-item">
+                        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
                                 <span class="user-name text-bold-600">{{ auth()->user()->name }}</span>
                                 <span class="user-status">Available</span>
                             </div>
-{{--                            <span>--}}
-{{--                                <img class="round" src="/vendor/dashboard/app-assets/images/portrait/small/avatar-s-11.jpg"--}}
-{{--                                     alt="avatar" height="40" width="40">--}}
-{{--                            </span>--}}
+                            {{--                            <span>--}}
+                            {{--                                <img class="round" src="/vendor/dashboard/app-assets/images/portrait/small/avatar-s-11.jpg"--}}
+                            {{--                                     alt="avatar" height="40" width="40">--}}
+                            {{--                            </span>--}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i class="feather icon-power"></i> Logout</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                     onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                    <i class="feather icon-power"> Logout </i>
+                                </a>
+                            </form>
                         </div>
                     </li>
                 </ul>

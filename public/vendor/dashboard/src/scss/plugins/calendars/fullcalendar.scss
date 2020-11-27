@@ -32,34 +32,36 @@ $calendarBorderColor: #e0e0e0;
       .bullets-group-2{
         margin-bottom: 0;
       }
-      .fc-center{
+      .fc-right{
         div:first-child{
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-end;
           align-items: center;
           h2{
             font-weight: 400;
             font-size: 1.3rem;
-            margin: 0 1rem;
+            margin: 0 0.5rem;
           }
         }
         .fc-button{
           border-radius: 50%;
           padding: .4rem .4rem;
+          height: 24px;
+          width: 24px;
           &.fc-prev-button{
-            margin-right: 1rem;
+            margin-right: 0.5rem;
             .fc-icon{
               position: relative;
-              top: -1px;
-              left: -1px;
+              top: -6px;
+              left: -4px;
             }
           }
           &.fc-next-button{
-            margin-left: 1rem;
+            margin-left: 0.5rem;
             .fc-icon{
               position: relative;
-              top: -1px;
-              right: -1px;
+              top: -6px;
+              right: 3px;
             }
           }
         }
@@ -193,24 +195,16 @@ $calendarBorderColor: #e0e0e0;
 
 // calendar header responsive styles
 @media(max-width: 900px){
-.fc{
-  .fc-header-toolbar{
-    margin-bottom: 2rem;
-    .bullets-group-1,
-    .bullets-group-2{
-      display: flex;
-      align-items: flex-start;
-      margin-left: 0;
-      flex-direction: column;
-      [class*="category-"]{
-        margin: .3rem 0;
+  .fc{
+    .fc-header-toolbar{
+      margin-bottom: 2rem;
+      .bullets-group-1{
+        [class*="category-"]{
+          margin: .3rem 0;
+        }
       }
     }
-    .bullets-group-2{
-      margin-top: -.5rem;
-    }
   }
-}
 }
 
 @include media-breakpoint-down(sm) {
@@ -218,21 +212,21 @@ $calendarBorderColor: #e0e0e0;
     .fc-header-toolbar{
       flex-direction: column;
       margin-bottom: 2rem;
-      .bullets-group-1,
-      .bullets-group-2{
-        display: inline-flex;
-        align-items: center;
-        margin-left: 0;
-        flex-direction: row;
+      .bullets-group-1{
+        display: none;
+      }
+      .fc-left{
+        margin-bottom: 1rem;
       }
       .fc-center{
         margin: 1 auto;
         margin-bottom: 0;
-        order: 2;
       }
-
       .fc-right{
         margin: 1rem auto;
+        div:first-child{
+          justify-content: center;
+        }
       }
     }
   }

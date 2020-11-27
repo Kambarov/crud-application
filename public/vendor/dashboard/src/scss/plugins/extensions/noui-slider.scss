@@ -37,6 +37,7 @@ $ex-val-color: #888;
         height: 20px;
         top: -5px;
         left: -1px;
+        cursor: pointer;
     }
 
     .noUi-origin  {
@@ -236,7 +237,9 @@ $ex-val-color: #888;
             }
         }
     }
-
+    .noUi-tooltip{
+        transform: translate(-10%,-50%);
+    }
 }
 
 // for example value of noUI Hover

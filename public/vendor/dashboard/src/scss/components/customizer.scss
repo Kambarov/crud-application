@@ -2,8 +2,7 @@
 	File Name: customizer.scss
 	Description: CSS used for demo purpose only. Remove this css from your project.
 	----------------------------------------------------------------------------------------
-	Item Name: Vuesax HTML Admin Template
-	Version: 1.1
+	Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
 	Author: PIXINVENT
 	Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -18,6 +17,7 @@
   top: 0;
   bottom: 0;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   transition: right 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99);
   backface-visibility: hidden;
   border-left: 1px solid rgba(0, 0, 0, 0.05);

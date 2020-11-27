@@ -1,52 +1,86 @@
 // Require the modules.
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var gulpSequence = require('gulp-sequence');
-var gulpRequireTasks = require('gulp-require-tasks');
-var minimist = require('minimist');
-var config = require('./config.json');
+var gulp = require("gulp")
+var gutil = require("gulp-util")
+var minimist = require("minimist")
+var config = require("./config.json")
 
-var options = minimist(process.argv.slice(2));
+var options = minimist(process.argv.slice(2))
 
 // Global Variables
-global.config = config;
+global.config = config
 
-gutil.log(gutil.colors.green('Starting Gulp!!'));
+gutil.log(gutil.colors.green("Starting Gulp!!"))
 
-// Invoke the module with options.
-gulpRequireTasks({
+const autoPrefixTasks = require("./gulp-tasks/autoprefix")(gulp)
+const cleanTasks = require("./gulp-tasks/clean")(gulp)
+const copyTask = require("./gulp-tasks/copy")(gulp)
+const cssTasks = require("./gulp-tasks/css")(gulp)
+const fileWriteTasks = require("./gulp-tasks/file-write")(gulp)
+const replaceTasks = require("./gulp-tasks/replace")(gulp)
+const scssTasks = require("./gulp-tasks/scss")(gulp)
+const uglifyTasks = require("./gulp-tasks/uglify")(gulp)
+const notifyTasks = require("./gulp-tasks/notify")(gulp)
 
-  // Specify path to your tasks directory.
-  path: process.cwd() + '/gulp-tasks' // This is default!
+// Clean CSS & JS
+gulp.task("dist-clean", cleanTasks.css, cleanTasks.js)
 
-  // Additionally pass any options to it from the table below.
-  // ...
-  // path	- './gulp-tasks'	Path to directory from which to load your tasks modules
-  // separator -	:	Task name separator, your tasks would be named, e.g. foo:bar:baz for ./tasks/foo/bar/baz.js
-  // arguments -	[]	Additional arguments to pass to your task function
-  // passGulp	- true	Whether to pass Gulp instance as a first argument to your task function
-  // passCallback -	true	Whether to pass task callback function as a last argument to your task function
-  // gulp	- require('gulp')	You could pass your existing Gulp instance if you have one, or it will be required automatically
+// Monitor Changes
+gulp.task(
+  "monitor",
+  gulp.series(gulp.parallel(scssTasks.watch))
+)
+// Dist JS
+gulp.task(
+  "dist-js",
+  gulp.series(cleanTasks.js, copyTask.js, uglifyTasks.js, notifyTasks.js)
+)
 
-});
-
-// Clean Task.
-gulp.task('dist-clean', ['clean:css', 'clean:js']);
-
-// Monitor changes for both pug and sass files.
-gulp.task('monitor', gulpSequence('sass:watch'));
-
-// JS Distribution Task.
-gulp.task('dist-js', gulpSequence('clean:js', 'copy:js', 'uglify:min', 'notify:js'));
-
-// SASS Compile Task.
-gulp.task('sass-compile', ['sass:main', 'sass:core', 'sass:pages', 'sass:plugins', 'sass:themes', 'sass:style']);
+// SASS Compile
+gulp.task(
+  "sass-compile",
+  gulp.parallel(
+    scssTasks.main,
+    scssTasks.core,
+    scssTasks.pages,
+    scssTasks.plugins,
+    scssTasks.themes,
+    scssTasks.style
+  )
+)
+// SASS Compile RTL
+gulp.task("sass-compile-rtl", scssTasks.rtl)
 
 // CSS Distribution Task.
-gulp.task('dist-css', gulpSequence('clean:css', 'sass-compile', 'autoprefixer:css', 'csscomb:css', 'cssmin:css', 'notify:css'));
+gulp.task(
+  "dist-css",
+  gulp.series(
+    cleanTasks.css,
+    "sass-compile",
+    autoPrefixTasks.css,
+    cssTasks.css_comb,
+    cssTasks.css_min,
+    gulp.parallel(notifyTasks.css)
+  )
+)
 
-// Full Distribution Task.
-gulp.task('dist', ['dist-css', 'dist-js']);
+// RTL CSS Distribution Task.
+gulp.task(
+  "dist-css-rtl",
+  gulp.series(
+    cleanTasks.css_rtl,
+    "sass-compile",
+    "sass-compile-rtl",
+    cssTasks.css_rtl,
+    autoPrefixTasks.css_rtl,
+    cssTasks.css_rtl_comb,
+    cssTasks.css_rtl_min
+  )
+)
 
-// Default Task.
-gulp.task('default', ['dist']);
+// DEFAULT
+gulp.task("dist", gulp.parallel("dist-css", "dist-js"))
+
+gulp.task("default", gulp.parallel("dist-css", "dist-js"))
+
+// Replacement Tasks
+gulp.task("replacement", gulp.series(replaceTasks.css, replaceTasks.js))

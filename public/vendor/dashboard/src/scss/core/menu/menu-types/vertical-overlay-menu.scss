@@ -4,8 +4,7 @@
     light & dark version, filpped layout, right side icons, native scroll and borders menu
     item seperation.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuesax HTML Admin Template
-    Version: 1.1
+    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -37,6 +36,11 @@
         .navbar-header{
             @include menu-navbar-width($menu-expanded-width);
         }
+        &.header-navbar{
+            &.floating-nav{
+                width: calc(100vw - (100vw - 100%) - calc(#{$content-padding} * 2));
+            }
+        }
     }
     // Main menu expanded
     .main-menu{
@@ -58,14 +62,17 @@
                         margin-right: 14px;
                         float:left;
                         &:before{
-                            transition: 200ms ease all;
-              font-size: 1.429rem;
+                          transition: 200ms ease all;
+                          font-size: 1.429rem;
                         }
                     }
                 }
             }
             li{
                 @include vertical-menu-has-sub-arrow(1rem);
+                a i{
+                   font-size: 1.1rem;
+                }
             }
         }
         .main-menu-footer{
@@ -111,6 +118,14 @@
         }
     }
 }
+// @include media-breakpoint-down(lg) {
+//     .vertical-overlay-menu {
+//         .header-navbar{
+//             background: $white;
+//             box-shadow: 0 4px 20px 0 rgba($black, 0.05);
+//         }
+//     }
+// }
 @include media-breakpoint-down(md) {
     .vertical-overlay-menu {
         .main-menu{

@@ -2,8 +2,7 @@
     File Name: navigations.scss
     Description: Common mixin for menus, contain dark and light version scss.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuesax HTML Admin Template
-    Version: 1.1
+    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -37,8 +36,8 @@
         }
     }
     &.menu-static{
-        height: auto;
-        padding-bottom: calc(100% - 35rem);
+        height: 100%;
+        padding-bottom: calc(100% - 20rem);
         .main-menu-content{
           height: unset !important;
         }
@@ -85,7 +84,7 @@
             align-items: center;
             margin-top: 1.35rem;
             .brand-logo {
-                background: url("../../app-assets/images/logo/vuesax-logo.png") no-repeat;
+                background: url("../../app-assets/images/logo/vuexy-logo.png") no-repeat;
                 background-position: -65px -54px;
                 height: 24px;
                 width: 35px;
@@ -360,7 +359,7 @@ body{
 }
 
 // for static main menu height
-@media (max-width: 768px){
+@media (max-width: 1200px){
   body{
     .main-menu{
       &.menu-static {

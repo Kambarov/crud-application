@@ -2,34 +2,34 @@
 //     File Name: tables.scss
 //     Description: Tables pages custom scss
 //     ----------------------------------------------------------------------------------------------
-//     Item Name: Vuesax HTML Admin Template
-//     Version: 1.1
+//     Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
 //     Author: PIXINVENT
 //     Author URL: http://www.themeforest.net/user/pixinvent
 // ================================================================================================
 
 // table-white-space
 .table-white-space {
-  th, td {
+  th,
+  td {
     white-space: nowrap;
   }
 }
 
 // table th, td padding
 .table {
-  thead th{
+  thead th {
     vertical-align: top;
   }
-  th, td {
+  th,
+  td {
     padding: 1rem;
     vertical-align: middle;
   }
   //table heading font-size
-  th{
+  th {
     font-size: $table-th-font-size;
   }
 }
-
 
 // Table - inverse
 .table-inverse {
@@ -38,24 +38,25 @@
 }
 
 // Table - hover animation
-.table-hover-animation{
+.table-hover-animation {
   background-color: $body-bg;
-  thead{
-    th{
+  thead {
+    th {
       border-top: 2px solid $table-border-color;
       border-bottom: 0;
       background-color: $white;
     }
   }
-  th, td {
+  th,
+  td {
     border: 0;
   }
-  tbody{
-    tr{
+  tbody {
+    tr {
       transition: all 0.25s ease;
       background-color: $white;
-      &:hover{
-        transform:  translateY(-4px);
+      &:hover {
+        transform: translateY(-4px);
       }
     }
   }
@@ -63,9 +64,9 @@
 
 // IE Specific CSS
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .table-hover-animation{
-    tr{
-      &:hover{
+  .table-hover-animation {
+    tr {
+      &:hover {
         border-bottom-color: $table-border-color;
       }
     }

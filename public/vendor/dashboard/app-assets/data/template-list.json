@@ -7,6 +7,7 @@
     {"name":"Todo", "url":"app-todo.html","icon":"feather icon-check-square"},
     {"name":"Calender", "url":"app-calender.html","icon":"feather icon-calendar"},
     {"name":"Shop Ecommerce", "url":"app-ecommerce-shop.html","icon":"feather icon-shopping-cart"},
+    {"name":"Product Details", "url":"app-ecommerce-details.html","icon":"feather icon-circle"},
     {"name":"Wish List", "url":"app-ecommerce-wishlist.html","icon":"feather icon-heart"},
     {"name":"Checkout", "url":"app-ecommerce-checkout.html","icon":"feather icon-credit-card"},
     {"name":"Data List - List View", "url":"data-list-view.html","icon":"feather icon-list"},
@@ -26,6 +27,7 @@
     {"name":"Card Actions", "url":"card-actions.html","icon":"feather icon-airplay"},
     {"name":"Table", "url":"table.html","icon":"feather icon-grid"},
     {"name":"Datatable", "url":"table-datatable.html","icon":"feather icon-grid"},
+    {"name":"agGrid Table", "url":"table-ag-grid.html","icon":"feather icon-grid"},
     {"name":"Alerts Component", "url":"component-alerts.html","icon":"feather icon-info"},
     {"name":"Buttons Component", "url":"component-buttons-basic.html","icon":"feather icon-inbox"},
     {"name":"Breadcrumbs Component", "url":"component-breadcrumbs.html","icon":"feather icon-more-horizontal"},
@@ -73,7 +75,7 @@
     {"name":"Not Authorized Page", "url":"page-not-authorized.html","icon":"feather icon-user-x"},
     {"name":"Maintenance Page", "url":"page-maintenance.html","icon":"feather icon-aperture"},
     {"name":"Profile Page", "url":"page-user-profile.html","icon":"feather icon-users"},
-    {"name":"User Settings", "url":"page-user-settings.html","icon":"feather icon-settings"},
+    {"name":"Account Settings", "url":"page-account-settings.html","icon":"feather icon-settings"},
     {"name":"FAQ Page", "url":"page-faq.html","icon":"feather icon-zap"},
     {"name":"Knowledge Base Page", "url":"page-knowledge-base.html","icon":"feather icon-align-left"},
     {"name":"Search Page", "url":"page-search.html","icon":"feather icon-search"},
@@ -90,7 +92,12 @@
     {"name":"Drag & Drop", "url":"ext-component-drag-drop.html","icon":"feather icon-move"},
     {"name":"Tour", "url":"ext-component-tour.html","icon":"feather icon-airplay"},
     {"name":"Clipboard", "url":"ext-component-clipboard.html","icon":"feather icon-clipboard"},
+    {"name":"Media Player", "url":"ext-component-plyr.html","icon":"feather icon-film"},
     {"name":"Context Menu", "url":"ext-component-context-menu.html","icon":"feather icon-menu"},
-    {"name":"l18n", "url":"ext-component-i18n.html","icon":"feather icon-radio"}
+    {"name":"l18n", "url":"ext-component-i18n.html","icon":"feather icon-radio"},
+    {"name":"Users List", "url":"app-user-list.html","icon":"feather icon-circle"},
+    {"name":"Users View", "url":"app-user-view.html","icon":"feather icon-circle"},
+    {"name":"Users Edit", "url":"app-user-edit.html","icon":"feather icon-circle"},
+    {"name":"Swiper", "url":"ext-component-swiper.html","icon":"feather icon-smartphone"}
   ]
 }

@@ -46,7 +46,7 @@
           color: $white;
         }
         &.disabled {
-          color: $secondary;
+          color: $gray-600;
         }
         &.dropdown-toggle::after {
           top: 1px;
@@ -108,7 +108,7 @@
 
   // Basic Nav Tabs
   &.nav-tabs {
-    box-shadow: -1px 11px 17px -10px rgba($pure-black, .04);
+    // box-shadow: -1px 11px 17px -10px rgba($pure-black, .04);
     border: none;
     margin-bottom: 1rem;
     position: relative;
@@ -117,7 +117,7 @@
     .nav-item {
       position: relative;
       .nav-link {
-        color: $pure-black;
+        color: $body-color;
         font-size: 0.95rem;
         border: none;
         min-width: auto;
@@ -129,8 +129,8 @@
           position: relative;
           color: $primary;
           transition: all .2s ease;
-          background-color: $white;
-          transform: translateY(-2px);
+          background-color: transparent;
+          // transform: translateY(-2px);
           &:after{
             content: attr(data-before);
             height: 2px;
@@ -154,7 +154,7 @@
         }
 
         &.disabled {
-          color: $secondary;
+          color: $gray-500;
         }
       }
     }
@@ -197,9 +197,10 @@
 
           &:after {
             transform: rotate(90deg);
-            left: -1rem;
+            left: auto;
+            right: -1.5rem;
             bottom: 100%;
-            top: 1rem;
+            top: 1.25rem;
             width: 2.14rem;
           }
         }
@@ -221,7 +222,7 @@
           display: none;
           background-color: $white;
           overflow-y: auto;
-          padding-left: 1rem;
+          // padding-left: 1rem;
           &.active {
             display: block;
           }
@@ -238,11 +239,9 @@
 
       .nav-item {
         .nav-link {
-
           &.active {
-
             &:after {
-              left: 2.4rem;
+              left: -1.5rem;
             }
 
           }
@@ -261,5 +260,14 @@
         }
       }
     }
+  }
+}
+
+@media(max-width:576px) {
+  // .nav-vertical .nav.nav-tabs.nav-left{
+  //   float: none;
+  // }
+  .nav-vertical .nav.nav-tabs .nav-item .nav-link.active:after{
+    height: 0;
   }
 }

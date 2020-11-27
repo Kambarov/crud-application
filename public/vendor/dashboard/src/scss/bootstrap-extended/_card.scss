@@ -23,7 +23,9 @@
   .card-bordered{
   	border: $card-border-width solid $card-border-color;
   }
-
+  .card-img{
+    object-fit: cover;
+  }
   .card-img-overlay{
     border-radius: $card-border-radius;
   }
@@ -154,6 +156,16 @@
 		}
 		&.visible{
       top: 22px !important;
+      display: block;
+      margin-top: 0;
+      top: 100%;
+      top: 50px;
+      height: auto;
+      left: 0px;
+      // padding: 10px;
+      z-index: 997;
+      position: absolute;
+      width: 100%;
 			.list-inline{
         background-color: $white;
         display: block;
@@ -161,16 +173,6 @@
         top: 12px;
         right: 15px;
 			}
-			  display: block;
-			  margin-top: 0;
-			  top: 100%;
-			  top: 50px;
-			  height: auto;
-			  left: 0px;
-			  padding: 10px;
-			  z-index: 997;
-			  position: absolute;
-			  width: 100%;
 		}
 	}
 }

@@ -1,11 +1,10 @@
 /*=========================================================================================
-    File Name: vertical-menu-modern.scss
+    File Name: vertical-menu.scss
     Description: A calssic vertical modern style menu with expand and collops support. It support
     light & dark version, filpped layout, right side icons, native scroll and borders menu
     item seperation.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuesax HTML Admin Template
-    Version: 1.1
+    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -47,6 +46,9 @@ body.vertical-layout {
       }
       .toggle-icon {
          margin-right: 0.425rem;
+         &:focus{
+            outline: none;
+         }
       }
       // Flipped menu expanded
       &.menu-flipped {
@@ -78,9 +80,6 @@ body.vertical-layout {
          .navbar {
             .navbar-header {
                @include menu-navbar-width($menu-expanded-width);
-            }
-            .navbar-container {
-               // @include main-menu-width($menu-expanded-width);
             }
             .navbar-brand {
                .brand-text {
@@ -158,9 +157,6 @@ body.vertical-layout {
             }
             .navbar-brand {
                padding: 15px 0px;
-            }
-            .navbar-container {
-               // @include main-menu-width($menu-collapsed-width);
             }
             // fixed-top navbar when menu-collapsed
             &.fixed-top{
@@ -288,14 +284,21 @@ body.vertical-layout {
          .footer {
             @include main-menu-width($menu-collapsed-width);
          }
-         .app-content{
-            .header-navbar{
-               // margin-left: $menu-collapsed-width;
+        //  .app-content{
+          .header-navbar{
+            // margin-left: $menu-collapsed-width;
+              // Floating-navbar
                &.floating-nav{
-                  width: calc(100% - 4.4rem - 80px);
+                  width: calc(100vw - (100vw - 100%) - 4.4rem - 80px);
+               }
+               // Navbar-static-top
+               &.navbar-static-top{
+                width: calc(100vw - (100vw - 100%) - 80px);
+                left: 80px;
                }
             }
-         }
+
+        //  }
          // Flipped menu collapsed
          &.menu-flipped {
             //Content collapsed flipped
@@ -325,21 +328,6 @@ body.vertical-layout {
             }
             .footer {
                @include vertical-flipped-menu($menu-collapsed-width);
-            }
-         }
-      }
-   }
-}
-// Collapsed menu RTL
-[data-textdirection="rtl"] body.vertical-layout {
-   &.vertical-menu-modern.menu-collapsed {
-      .main-menu {
-         .navigation {
-            > li > a {
-              padding: 14px 16px !important;
-            }
-            > li.navigation-header .icon-minus {
-              padding: 12px 0px;
             }
          }
       }
@@ -395,6 +383,8 @@ body.vertical-layout {
       &.vertical-menu-modern {
          .main-menu {
             width: 0;
+            opacity: 0;
+            left: -260px;
             .navigation {
                > li > a > span {
                   animation: 0.1s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadeout;
@@ -413,18 +403,22 @@ body.vertical-layout {
          .footer {
             @include main-menu-width(0);
          }
-      }
-
-      &.vertical-overlay-menu {
-        .app-content{
-            .header-navbar{
-               // margin-left: $menu-collapsed-width;
-               &.floating-nav{
-                  width: calc(100% - 4.4rem);
-               }
+         &.menu-collapsed {
+            .app-content, .footer{
+               margin-left: 0;
             }
-        }
+            .main-menu{
+               width: 0;
+            }
+         }
       }
+      // &:not(.horizontal-layout){
+      //    &.navbar-floating{
+      //       .header-navbar{
+      //          width: calc(100% - 4.4rem) !important;
+      //       }
+      //    }
+      // }
    }
 }
 
@@ -447,7 +441,6 @@ body.vertical-layout {
       }
    }
 }
-
 
 @keyframes fadein {
    from {
